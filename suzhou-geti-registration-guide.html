@@ -1,0 +1,909 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>苏州个体工商户注册实操手册 · 2025最新版</title>
+<style>
+:root{
+  --green:#27ae60;--green-l:#2ecc71;--green-dim:#0d1f14;--green-b:#1a4d2a;
+  --blue:#2980b9;--blue-l:#3498db;--blue-dim:#0d1828;--blue-b:#1a3a5c;
+  --gold:#f39c12;--gold-l:#f1c40f;--gold-dim:#1f1500;--gold-b:#5c3a00;
+  --red:#c0392b;--red-l:#e74c3c;--red-dim:#2c1010;--red-b:#5c1818;
+  --gray:#95a5a6;--gray-l:#bdc3c7;
+  --bg:#0f1117;--bg2:#161b22;--bg3:#1e2530;--bg4:#252d3a;
+  --text:#e8eaf0;--text2:#a8b2c0;--text3:#6b7894;
+  --border:#2a3347;--border2:#3a4560;
+  --r:8px;--rl:12px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'PingFang SC','Microsoft YaHei',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.7;font-size:15px}
+
+.header{background:linear-gradient(135deg,#050f05 0%,#0f1117 50%,#050a14 100%);border-bottom:1px solid var(--border);padding:32px 0 24px;text-align:center}
+.badge{display:inline-flex;gap:8px;align-items:center;margin-bottom:12px}
+.badge span{display:inline-block;background:var(--green-dim);border:1px solid var(--green);color:var(--green-l);padding:3px 12px;border-radius:16px;font-size:11px;font-weight:700;letter-spacing:1px}
+.badge span.b2{background:var(--blue-dim);border-color:var(--blue);color:var(--blue-l)}
+.header h1{font-size:24px;font-weight:700;margin-bottom:6px}
+.header p{color:var(--text2);font-size:14px}
+.meta{margin-top:16px;display:flex;justify-content:center;gap:24px;flex-wrap:wrap}
+.meta span{color:var(--text3);font-size:12px}
+.meta strong{color:var(--green-l)}
+
+.container{max-width:900px;margin:0 auto;padding:0 20px}
+
+/* Progress nav */
+.progress-nav{background:var(--bg2);border-bottom:2px solid var(--green-b);padding:0;overflow-x:auto}
+.progress-nav ul{display:flex;list-style:none;min-width:max-content}
+.progress-nav li a{display:flex;align-items:center;gap:6px;padding:12px 16px;color:var(--text3);text-decoration:none;font-size:12px;font-weight:600;white-space:nowrap;border-bottom:2px solid transparent;margin-bottom:-2px;transition:all .2s}
+.progress-nav li a:hover,.progress-nav li a.active{color:var(--text);border-bottom-color:var(--green-l)}
+.progress-nav li a .pn{width:20px;height:20px;border-radius:50%;background:var(--bg3);border:1px solid var(--border2);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;flex-shrink:0}
+.progress-nav li a:hover .pn,.progress-nav li a.active .pn{background:var(--green-dim);border-color:var(--green);color:var(--green-l)}
+
+section{padding:36px 0;border-bottom:1px solid var(--border)}
+section:last-child{border-bottom:none}
+.slabel{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--green-l);margin-bottom:6px}
+h2{font-size:20px;font-weight:700;margin-bottom:18px}
+h3{font-size:14px;font-weight:700;color:var(--text);margin-bottom:10px}
+p{color:var(--text2);margin-bottom:8px;font-size:14px}
+
+/* Alerts */
+.alert{border-radius:var(--r);padding:12px 16px;margin-bottom:14px;display:flex;gap:10px;align-items:flex-start}
+.ai{font-size:16px;flex-shrink:0;margin-top:1px}
+.alert-green{background:var(--green-dim);border:1px solid var(--green-b)}
+.alert-blue{background:var(--blue-dim);border:1px solid var(--blue-b)}
+.alert-gold{background:var(--gold-dim);border:1px solid var(--gold-b)}
+.alert-red{background:var(--red-dim);border:1px solid var(--red-b)}
+.alert p{margin:0;font-size:13px;color:var(--text2)}
+.alert strong{color:var(--text)}
+
+/* Key stat row */
+.krow{display:flex;gap:14px;margin-bottom:20px;flex-wrap:wrap}
+.kstat{background:var(--bg2);border:1px solid var(--border);border-radius:var(--rl);padding:16px;flex:1;min-width:130px;text-align:center}
+.kstat .kn{font-size:26px;font-weight:700;color:var(--green-l);line-height:1}
+.kstat .ku{font-size:12px;color:var(--green-l)}
+.kstat .kl{font-size:12px;color:var(--text2);margin-top:4px}
+.kstat .ks{font-size:11px;color:var(--text3);margin-top:2px}
+
+/* Step card */
+.step-card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--rl);overflow:hidden;margin-bottom:16px}
+.step-card.done{border-color:var(--green-b)}
+.step-card.active{border-color:var(--blue);box-shadow:0 0 0 1px var(--blue-dim)}
+.step-header{display:flex;gap:14px;align-items:flex-start;padding:16px 18px;border-bottom:1px solid var(--border);cursor:pointer}
+.step-num{width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;flex-shrink:0}
+.step-card .step-num{background:var(--bg3);border:2px solid var(--border2);color:var(--text3)}
+.step-card.done .step-num{background:var(--green-dim);border-color:var(--green);color:var(--green-l)}
+.step-header-content{flex:1}
+.step-header-content h3{margin-bottom:2px}
+.step-header-content .step-meta{font-size:12px;color:var(--text3)}
+.step-tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:6px}
+.tag{display:inline-block;font-size:11px;padding:2px 8px;border-radius:8px;font-weight:600}
+.t-green{background:var(--green-dim);color:var(--green-l);border:1px solid var(--green-b)}
+.t-blue{background:var(--blue-dim);color:var(--blue-l);border:1px solid var(--blue-b)}
+.t-gold{background:var(--gold-dim);color:var(--gold);border:1px solid var(--gold-b)}
+.t-red{background:var(--red-dim);color:var(--red-l);border:1px solid var(--red-b)}
+.t-gray{background:var(--bg3);color:var(--text3);border:1px solid var(--border2)}
+.step-body{padding:16px 18px}
+
+/* Checklist */
+.checklist{list-style:none}
+.checklist li{display:flex;gap:10px;padding:7px 0;border-bottom:1px solid var(--border);font-size:13px;color:var(--text2)}
+.checklist li:last-child{border-bottom:none}
+.checklist li::before{content:'□';color:var(--text3);flex-shrink:0;font-size:14px}
+.checklist li strong{color:var(--text)}
+
+/* Input row (simulated form) */
+.form-sim{background:var(--bg3);border-radius:var(--r);padding:14px 16px;margin:12px 0}
+.form-row{display:flex;gap:10px;margin-bottom:8px;align-items:flex-start;font-size:13px}
+.form-row:last-child{margin-bottom:0}
+.form-label{color:var(--text3);min-width:120px;flex-shrink:0;padding-top:2px}
+.form-value{color:var(--text);font-weight:500;flex:1}
+.form-value .suggested{color:var(--green-l);background:var(--green-dim);padding:2px 8px;border-radius:4px;font-family:monospace;font-size:12px;display:inline-block}
+.form-value .note{font-size:11px;color:var(--text3);margin-top:2px;display:block}
+
+/* Table */
+.tw{overflow-x:auto;margin:12px 0}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th{background:var(--bg3);color:var(--text);font-weight:600;padding:9px 12px;text-align:left;border-bottom:2px solid var(--border2);white-space:nowrap}
+td{padding:8px 12px;border-bottom:1px solid var(--border);color:var(--text2);vertical-align:top}
+tr:hover td{background:var(--bg3)}
+.cg{color:var(--green-l);font-weight:600}
+.co{color:var(--gold);font-weight:600}
+.cr{color:var(--red-l);font-weight:600}
+.cgr{color:var(--text3)}
+
+/* Link box */
+.link-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:10px;margin:12px 0}
+.link-card{background:var(--bg3);border:1px solid var(--border);border-radius:var(--r);padding:12px 14px}
+.link-card .link-title{font-size:13px;font-weight:700;color:var(--text);margin-bottom:3px}
+.link-card .link-url{font-size:11px;color:var(--blue-l);font-family:monospace;word-break:break-all}
+.link-card .link-desc{font-size:12px;color:var(--text3);margin-top:4px}
+
+/* Tax table */
+.tax-card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--rl);overflow:hidden;margin-bottom:14px}
+.tax-header{padding:12px 16px;background:var(--bg3);border-bottom:1px solid var(--border);font-size:14px;font-weight:700;display:flex;justify-content:space-between;align-items:center}
+.tax-body{padding:14px 16px}
+.tax-row{display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid var(--border);font-size:13px}
+.tax-row:last-child{border-bottom:none}
+.tax-row .tk{color:var(--text3)}
+.tax-row .tv{color:var(--text);font-weight:500}
+.tax-row .tv.highlight{color:var(--green-l);font-weight:700}
+
+/* Scope box */
+.scope-box{background:var(--bg3);border:1px solid var(--border2);border-radius:var(--r);padding:14px 16px;margin:12px 0;font-family:monospace;font-size:13px;color:var(--green-l);line-height:2}
+.scope-note{font-family:inherit;font-size:11px;color:var(--text3);margin-top:8px}
+
+/* Timeline */
+.tl{position:relative;padding-left:24px}
+.tl::before{content:'';position:absolute;left:6px;top:8px;bottom:0;width:2px;background:var(--border2)}
+.ti{position:relative;margin-bottom:20px}
+.td-dot{position:absolute;left:-22px;top:4px;width:10px;height:10px;border-radius:50%;border:2px solid var(--green);background:var(--green-dim)}
+.ti-day{font-size:11px;font-weight:700;color:var(--green-l);margin-bottom:3px}
+.ti-title{font-size:14px;font-weight:600;color:var(--text);margin-bottom:3px}
+.ti-desc{font-size:13px;color:var(--text2)}
+
+/* QA */
+.qa{margin-bottom:12px}
+.qa-q{font-size:13px;font-weight:700;color:var(--gold);margin-bottom:4px}
+.qa-a{font-size:13px;color:var(--text2);padding-left:12px;border-left:2px solid var(--gold-b)}
+
+details{background:var(--bg3);border:1px solid var(--border);border-radius:var(--r);margin-bottom:8px}
+summary{padding:10px 14px;cursor:pointer;font-size:13px;font-weight:600;color:var(--text);list-style:none;display:flex;justify-content:space-between;align-items:center}
+summary::after{content:'＋';color:var(--text3);font-size:14px}
+details[open] summary::after{content:'－'}
+.det-body{padding:0 14px 14px}
+
+footer{background:var(--bg2);border-top:1px solid var(--border);padding:20px;text-align:center;color:var(--text3);font-size:12px}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="container">
+    <div class="badge">
+      <span>苏州市 · 江苏省</span>
+      <span class="b2">2025最新版（依据2025年7月15日新规）</span>
+    </div>
+    <h1>个体工商户注册实操手册</h1>
+    <p>互联网 · 软件 · AI平台开发者专用 · 全流程步骤 + 税务 + ICP备案</p>
+    <div class="meta">
+      <span>适用法规 <strong>《个体工商户登记管理规定》2025年7月15日施行</strong></span>
+      <span>整理日期 <strong>2026-04-10</strong></span>
+      <span>注册费用 <strong>¥0</strong></span>
+      <span>预计用时 <strong>当日完成</strong></span>
+    </div>
+  </div>
+</div>
+
+<nav class="progress-nav">
+  <div class="container">
+    <ul>
+      <li><a href="#overview"><span class="pn">0</span>概览</a></li>
+      <li><a href="#before"><span class="pn">1</span>注册前准备</a></li>
+      <li><a href="#register"><span class="pn">2</span>注册流程</a></li>
+      <li><a href="#scope"><span class="pn">3</span>经营范围</a></li>
+      <li><a href="#address"><span class="pn">4</span>经营场所</a></li>
+      <li><a href="#after"><span class="pn">5</span>注册后步骤</a></li>
+      <li><a href="#tax"><span class="pn">6</span>税务指南</a></li>
+      <li><a href="#icp"><span class="pn">7</span>ICP备案</a></li>
+      <li><a href="#faq"><span class="pn">?</span>常见问题</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="container">
+
+<!-- 0 概览 -->
+<section id="overview">
+  <div class="slabel">00 · 快速概览</div>
+  <h2>注册个体工商户需要几天？花多少钱？</h2>
+
+  <div class="alert alert-green">
+    <span class="ai">✅</span>
+    <p><strong>苏州2025年：90%的个体工商户申请当日审批通过，全程网办，零费用，无需到窗口。</strong>最新依据为2025年7月15日施行的《个体工商户登记管理规定》（国市监注规〔2025〕103号）。</p>
+  </div>
+
+  <div class="krow">
+    <div class="kstat"><div class="kn">0<span class="ku">元</span></div><div class="kl">全部费用</div><div class="ks">注册、执照、变更均免费</div></div>
+    <div class="kstat"><div class="kn">1<span class="ku">天</span></div><div class="kl">审批周期（90%当日）</div><div class="ks">最长法定3个工作日</div></div>
+    <div class="kstat"><div class="kn">0<span class="ku">次</span></div><div class="kl">需要到窗口跑</div><div class="ks">全程网办+APP人脸识别</div></div>
+    <div class="kstat"><div class="kn">3<span class="ku">个</span></div><div class="kl">必须准备的材料</div><div class="ks">身份证+地址证明+申请表</div></div>
+  </div>
+
+  <h3>注册完能做什么</h3>
+  <div class="tw">
+    <table>
+      <thead><tr><th>能力</th><th>个体工商户后可用</th><th>备注</th></tr></thead>
+      <tbody>
+        <tr><td><strong>微信小程序收款</strong></td><td class="cg">✓ 企业认证后可开通微信支付</td><td>认证费¥300/年</td></tr>
+        <tr><td><strong>苹果App Store内购</strong></td><td class="cg">✓ 个人账号即可（$99/年）</td><td>不需要营业执照</td></tr>
+        <tr><td><strong>华为/腾讯应用商店上架</strong></td><td class="cg">✓ 接受个体工商户账号</td><td>须软著+ICP备案</td></tr>
+        <tr><td><strong>支付宝/微信商户收款</strong></td><td class="cg">✓ 可申请商家账户</td><td>营业执照+身份证</td></tr>
+        <tr><td><strong>ICP备案（非商业性）</strong></td><td class="cg">✓ 以"单位"性质备案</td><td>比个人备案更可信</td></tr>
+        <tr><td><strong>开具发票（数电票）</strong></td><td class="cg">✓ 增值税普通发票</td><td>税务局登记后申请</td></tr>
+        <tr><td><strong>申请软件著作权</strong></td><td class="cg">✓ 约¥350，1-3个月</td><td>应用商店上架必需</td></tr>
+        <tr><td><strong>ICP经营许可证（付费网站）</strong></td><td class="cr">✗ 仅限有限公司</td><td>日后注册公司再办</td></tr>
+        <tr><td><strong>小米/OPPO/vivo应用商店</strong></td><td class="cr">✗ 仅限企业账号</td><td>注册公司后可补全</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- 1 注册前准备 -->
+<section id="before">
+  <div class="slabel">01 · 注册前准备</div>
+  <h2>开始前需要想清楚的4件事</h2>
+
+  <div class="step-card">
+    <div class="step-header">
+      <div class="step-num">A</div>
+      <div class="step-header-content">
+        <h3>要不要起字号（商业名称）？</h3>
+        <div class="step-meta">选填，但建议起一个</div>
+      </div>
+    </div>
+    <div class="step-body">
+      <div class="qa">
+        <div class="qa-q">有字号 vs 无字号有什么区别？</div>
+        <div class="qa-a">有字号：营业执照显示"苏州XX网络工作室（个体工商户）"，更专业，有品牌感，开发票抬头更正式。<br>无字号：营业执照显示"张三（个体工商户）"，完全合法，办理更简单。</div>
+      </div>
+      <div class="qa">
+        <div class="qa-q">字号格式是什么？</div>
+        <div class="qa-a">格式固定：<strong>行政区划 + 字号 + 行业描述（个体工商户）</strong><br>
+        示例：<span style="color:var(--green-l);font-family:monospace">苏州市XX互联网工作室（个体工商户）</span><br>
+        注意：字号在苏州市内需唯一，提前在 <span style="color:var(--blue-l);font-family:monospace">wsdj.samr.gov.cn/saicmccx/</span> 查重</div>
+      </div>
+      <div class="alert alert-blue" style="margin-top:10px;">
+        <span class="ai">💡</span>
+        <p>互联网/AI工具产品建议起字号，方便后续注册商标和签署合同。个体工商户不能注册公司商标，但字号本身有一定商誉保护。</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="step-card">
+    <div class="step-header">
+      <div class="step-num">B</div>
+      <div class="step-header-content">
+        <h3>经营场所用哪个地址？</h3>
+        <div class="step-meta">家庭住址完全可用于软件/AI业务</div>
+      </div>
+    </div>
+    <div class="step-body">
+      <div class="tw">
+        <table>
+          <thead><tr><th>地址类型</th><th>是否可用</th><th>所需证明材料</th><th>费用</th></tr></thead>
+          <tbody>
+            <tr><td><strong>自有住宅（本人产权）</strong></td><td class="cg">✓ 推荐</td><td>不动产权证/房产证</td><td class="cg">免费</td></tr>
+            <tr><td><strong>租住公寓（本人租住）</strong></td><td class="cg">✓ 可用</td><td>房屋租赁合同+房东同意书</td><td class="cg">免费</td></tr>
+            <tr><td><strong>父母/家人房产</strong></td><td class="cg">✓ 可用</td><td>房产证+房主身份证+同意书</td><td class="cg">免费</td></tr>
+            <tr><td><strong>商业写字楼（租用）</strong></td><td class="cg">✓ 可用</td><td>租赁合同（需注明商业用途）</td><td class="co">租金成本</td></tr>
+            <tr><td><strong>虚拟地址/集群注册</strong></td><td class="cg">✓ 可用</td><td>园区/孵化器协议</td><td class="co">¥2000-8000/年</td></tr>
+            <tr><td><strong>网络经营场所</strong></td><td class="cg">✓ 新政策</td><td>电商平台账号URL</td><td class="cg">免费（仅适用纯电商）</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="alert alert-green" style="margin-top:10px;">
+        <span class="ai">🏠</span>
+        <p><strong>推荐：用家庭住址。</strong>2025年7月新规明确支持住宅地址用于软件开发、互联网服务、咨询等非干扰性业务。苏州不需要居委会证明（部分旧规要求已取消）。准备好<strong>房产证或租赁合同</strong>即可。</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="step-card">
+    <div class="step-header">
+      <div class="step-num">C</div>
+      <div class="step-header-content">
+        <h3>安装"江苏市监"APP</h3>
+        <div class="step-meta">注册过程中人脸识别和电子签名必须</div>
+      </div>
+    </div>
+    <div class="step-body">
+      <ul class="checklist">
+        <li>在手机应用商店搜索 <strong>"江苏市监"</strong> 下载安装（安卓/iOS均有）</li>
+        <li>用手机号注册账号，完成<strong>实名认证</strong>（需身份证正反面+人脸识别）</li>
+        <li>实名认证完成后即可用于后续注册流程的电子签名</li>
+        <li>备用渠道：在PC浏览器访问 <span style="color:var(--blue-l);font-family:monospace">www.jszwfw.gov.cn</span>，用支付宝/微信扫码完成实名认证</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="step-card">
+    <div class="step-header">
+      <div class="step-num">D</div>
+      <div class="step-header-content">
+        <h3>准备好的材料清单</h3>
+        <div class="step-meta">全部用手机拍照或扫描即可</div>
+      </div>
+    </div>
+    <div class="step-body">
+      <ul class="checklist">
+        <li><strong>本人身份证正反面</strong> — 拍清晰照片，四角完整，无遮挡</li>
+        <li><strong>经营场所证明</strong> — 房产证照片 或 租赁合同扫描件（如是他人房产加房主同意书）</li>
+        <li><strong>字号候选名称</strong>（如需）— 准备3-5个备选，防止重名被驳回</li>
+        <li><strong>手机号码</strong> — 用于接收短信验证码，税务局后续也会用此号码</li>
+        <li><strong>邮寄地址</strong>（如需纸质执照）— 电子执照不需要</li>
+      </ul>
+      <div class="alert alert-gold" style="margin-top:10px;">
+        <span class="ai">⚠️</span>
+        <p>2025年7月新规：政府部门之间共享数据，大部分信息系统自动核验，<strong>无需再提交身份证原件</strong>，拍照上传即可。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 2 注册流程 -->
+<section id="register">
+  <div class="slabel">02 · 注册流程（全程网办）</div>
+  <h2>一步步操作指南</h2>
+
+  <div class="alert alert-blue">
+    <span class="ai">💻</span>
+    <p><strong>官方入口：</strong>江苏政务服务网 <span style="color:var(--blue-l);font-family:monospace">www.jszwfw.gov.cn</span> → 搜索"个体工商户设立登记" → 或直接进入苏州市场监管局网上服务系统</p>
+  </div>
+
+  <div class="tl">
+    <div class="ti">
+      <div class="td-dot"></div>
+      <div class="ti-day">第1步（约10分钟）</div>
+      <div class="ti-title">登录系统并核名</div>
+      <div class="ti-desc">
+        打开 <span style="color:var(--blue-l);font-family:monospace">www.jszwfw.gov.cn</span>，点击右上角"登录"，选择支付宝/微信/江苏市监APP扫码登录。<br>
+        进入"个体工商户设立登记"表单。<br>
+        如需字号，先在"名称预审"填入候选名称，格式：<strong>苏州市 + 字号 + 行业 + (个体工商户)</strong>。系统约1小时内返回结果。<br>
+        不要字号可跳过此步，直接填写申请表。
+      </div>
+    </div>
+    <div class="ti">
+      <div class="td-dot"></div>
+      <div class="ti-day">第2步（约20分钟）</div>
+      <div class="ti-title">填写登记申请表</div>
+      <div class="ti-desc">
+        按顺序填写以下信息：
+        <div class="form-sim">
+          <div class="form-row"><span class="form-label">经营者姓名</span><span class="form-value">本人姓名（与身份证一致）</span></div>
+          <div class="form-row"><span class="form-label">公民身份号码</span><span class="form-value">身份证号（系统自动核验）</span></div>
+          <div class="form-row"><span class="form-label">住所（住址）</span><span class="form-value">本人常住地址（可与经营场所相同）</span></div>
+          <div class="form-row"><span class="form-label">经营场所</span><span class="form-value">见第4节详细说明 → 填家庭住址即可</span></div>
+          <div class="form-row"><span class="form-label">经营范围</span><span class="form-value"><span class="suggested">见第3节 → 从下拉目录选标准条目</span></span></div>
+          <div class="form-row"><span class="form-label">组成形式</span><span class="form-value"><span class="suggested">个人经营</span><span class="note">（一人独自经营选此项；家庭成员共同经营选"家庭经营"）</span></span></div>
+          <div class="form-row"><span class="form-label">从业人数</span><span class="form-value"><span class="suggested">1</span><span class="note">（目前只有你一人）</span></span></div>
+          <div class="form-row"><span class="form-label">注册资本</span><span class="form-value"><span class="suggested">10000元</span><span class="note">（无法定最低限，填1万-5万均可，仅供参考）</span></span></div>
+          <div class="form-row"><span class="form-label">是否电子商务经营者</span><span class="form-value"><span class="suggested">否</span><span class="note">（做自有网站/App/SaaS，不在淘宝/京东等平台开店的选否）</span></span></div>
+        </div>
+      </div>
+    </div>
+    <div class="ti">
+      <div class="td-dot"></div>
+      <div class="ti-day">第3步（约5分钟）</div>
+      <div class="ti-title">上传证明材料</div>
+      <div class="ti-desc">
+        上传：① 身份证正面照片 ② 身份证背面照片 ③ 经营场所证明（房产证或租赁合同）<br>
+        图片要求：清晰、四角完整、不反光、大小通常10MB以内（各省系统略有差异）<br>
+        身份证有效期须≥6个月，否则需先换证
+      </div>
+    </div>
+    <div class="ti">
+      <div class="td-dot"></div>
+      <div class="ti-day">第4步（约2分钟）</div>
+      <div class="ti-title">人脸识别 + 电子签名</div>
+      <div class="ti-desc">
+        系统提示用<strong>"江苏市监"APP</strong>扫描页面二维码，完成人脸识别（对准摄像头按提示眨眼/转头）。<br>
+        识别通过后在APP上签署电子申请书（手写签名或点击确认）。<br>
+        全程约1-2分钟，无需打印任何纸质材料。
+      </div>
+    </div>
+    <div class="ti">
+      <div class="td-dot"></div>
+      <div class="ti-day">第5步（等待）</div>
+      <div class="ti-title">等待审批 → 领取电子执照</div>
+      <div class="ti-desc">
+        提交后系统自动分配到苏州市市场监督管理局审核。<br>
+        <strong>90%的申请当日审批通过</strong>，法定最长3个工作日。<br>
+        审批通过后：<br>
+        ① <strong>电子营业执照</strong>：立即生成，在"江苏市监"APP→"我的执照"中查看下载，法律效力等同纸质执照<br>
+        ② <strong>纸质执照</strong>：可选择邮寄（填写地址后约3-5天收到），或到辖区市场监管所窗口领取<br>
+        执照上显示：统一社会信用代码（18位）即是你的税务ID，无需另行申领
+      </div>
+    </div>
+  </div>
+
+  <div class="alert alert-gold">
+    <span class="ai">📱</span>
+    <p><strong>获取电子执照：</strong>微信搜索小程序"电子营业执照"或"苏服办"，用实名账号登录后可随时调取执照，全国通用，无需携带纸质版。</p>
+  </div>
+
+  <h3>官方入口汇总</h3>
+  <div class="link-grid">
+    <div class="link-card">
+      <div class="link-title">江苏政务服务网（首选入口）</div>
+      <div class="link-url">www.jszwfw.gov.cn</div>
+      <div class="link-desc">搜索"个体工商户设立登记"直接办理</div>
+    </div>
+    <div class="link-card">
+      <div class="link-title">国家市场监管总局政务服务</div>
+      <div class="link-url">zwfw.samr.gov.cn</div>
+      <div class="link-desc">全国入口，江苏用户跳转到江苏系统</div>
+    </div>
+    <div class="link-card">
+      <div class="link-title">苏州市市场监督管理局</div>
+      <div class="link-url">scjgj.suzhou.gov.cn</div>
+      <div class="link-desc">苏州市级入口，可查进度</div>
+    </div>
+    <div class="link-card">
+      <div class="link-title">企业名称查重</div>
+      <div class="link-url">wsdj.samr.gov.cn/saicmccx/</div>
+      <div class="link-desc">注册前查字号是否重名</div>
+    </div>
+    <div class="link-card">
+      <div class="link-title">苏州工业园区（SIP）</div>
+      <div class="link-url">one.sipac.gov.cn</div>
+      <div class="link-desc">园区入驻者使用此专属入口</div>
+    </div>
+    <div class="link-card">
+      <div class="link-title">苏小福（苏州个体工商户专区）</div>
+      <div class="link-url">sst.suzhou.gov.cn/appx/suxiaofu/home</div>
+      <div class="link-desc">苏州市个体经营者专属服务平台</div>
+    </div>
+  </div>
+
+  <div class="alert alert-blue" style="margin-top:4px;">
+    <span class="ai">📞</span>
+    <p><strong>咨询电话：</strong>江苏省市场监督管理局 <strong>025-83666111</strong>（工作日 9:00-11:30, 14:00-17:00）&nbsp;|&nbsp;苏州市12345政务服务热线</p>
+  </div>
+</section>
+
+<!-- 3 经营范围 -->
+<section id="scope">
+  <div class="slabel">03 · 经营范围</div>
+  <h2>互联网/AI/软件业务的标准用语</h2>
+
+  <div class="alert alert-gold">
+    <span class="ai">🔍</span>
+    <p><strong>查询工具：</strong>在申请表"经营范围"栏，系统提供标准目录下拉选择。也可先在 <span style="color:var(--blue-l);font-family:monospace">jyfwyun.com</span> 查询规范表述后复制。2021年起不能自由写文字，须从标准目录选取。</p>
+  </div>
+
+  <h3>推荐组合（AI视觉小说创作平台）</h3>
+  <div class="scope-box">
+    技术服务、技术开发、技术咨询、技术交流、技术转让、技术推广；<br>
+    软件开发；<br>
+    应用软件服务；<br>
+    人工智能应用软件开发；<br>
+    数据处理和存储支持服务；<br>
+    信息技术咨询服务；<br>
+    互联网信息服务；
+    <div class="scope-note">以上均为一般经营项目，无需前置审批，可直接填写。</div>
+  </div>
+
+  <div class="tw">
+    <table>
+      <thead><tr><th>业务类型</th><th>推荐经营范围表述</th><th>是否需要许可</th></tr></thead>
+      <tbody>
+        <tr><td>AI对话/创作工具</td><td class="cg">人工智能应用软件开发</td><td class="cg">无（一般项目）</td></tr>
+        <tr><td>平台软件开发</td><td class="cg">软件开发；应用软件服务</td><td class="cg">无</td></tr>
+        <tr><td>技术咨询/接项目</td><td class="cg">技术服务、技术开发、技术咨询</td><td class="cg">无</td></tr>
+        <tr><td>用户数据处理</td><td class="cg">数据处理和存储支持服务</td><td class="cg">无</td></tr>
+        <tr><td>网站/App运营</td><td class="cg">互联网信息服务</td><td class="co">非商业性：无；商业性：需ICP许可证（须公司）</td></tr>
+        <tr><td>在线出版/发行</td><td class="cr">网络出版服务</td><td class="cr">需网络出版服务许可证（须公司，条件严）</td></tr>
+        <tr><td>网络游戏</td><td class="cr">网络游戏运营</td><td class="cr">需版号（须公司，避免填写）</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="alert alert-green">
+    <span class="ai">💡</span>
+    <p><strong>策略建议：</strong>"互联网信息服务"可以填入一般经营项目栏——填了不等于你需要办ICP许可证（那是商业性运营的额外要求）。这样经营范围覆盖面更广，后续拓展业务不必修改执照。</p>
+  </div>
+
+  <details>
+    <summary>更多AI细分经营范围表述（按需添加）</summary>
+    <div class="det-body" style="margin-top:10px;">
+      <ul style="list-style:none;">
+        <li style="padding:4px 0;font-size:13px;color:var(--text2);">• 自然语言理解应用软件技术</li>
+        <li style="padding:4px 0;font-size:13px;color:var(--text2);">• 机器翻译应用软件技术</li>
+        <li style="padding:4px 0;font-size:13px;color:var(--text2);">• 计算机视听觉应用软件技术</li>
+        <li style="padding:4px 0;font-size:13px;color:var(--text2);">• 人工智能基础软件开发</li>
+        <li style="padding:4px 0;font-size:13px;color:var(--text2);">• 云计算服务</li>
+        <li style="padding:4px 0;font-size:13px;color:var(--text2);">• 互联网数据服务</li>
+        <li style="padding:4px 0;font-size:13px;color:var(--text2);">• 企业管理咨询（如需对外提供咨询服务）</li>
+      </ul>
+      <p style="font-size:12px;color:var(--text3);margin-top:8px;">注：经营范围越多越好，只要不含需要前置许可的项目，多填不影响审批。后续可随时免费在市场监管局修改经营范围。</p>
+    </div>
+  </details>
+</section>
+
+<!-- 4 经营场所 -->
+<section id="address">
+  <div class="slabel">04 · 经营场所详解</div>
+  <h2>苏州住宅地址注册说明</h2>
+
+  <div class="alert alert-green">
+    <span class="ai">🏠</span>
+    <p><strong>2025年7月新规明确：</strong>软件开发、互联网服务、信息技术咨询等<strong>不干扰邻居、不接待大量客户</strong>的业务，可以用住宅地址作为经营场所，苏州支持此政策。</p>
+  </div>
+
+  <h3>使用住宅地址的操作步骤</h3>
+
+  <div class="step-card">
+    <div class="step-header">
+      <div class="step-num">→</div>
+      <div class="step-header-content">
+        <h3>情况一：本人是房产产权人</h3>
+      </div>
+    </div>
+    <div class="step-body">
+      <ul class="checklist">
+        <li>准备：<strong>不动产权证书（房产证）</strong>拍照，需清晰可见房产地址和本人姓名</li>
+        <li>在申请表"经营场所合法使用证明"上传房产证照片即可</li>
+        <li>无需居委会证明（苏州2025年已简化）</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="step-card">
+    <div class="step-header">
+      <div class="step-num">→</div>
+      <div class="step-header-content">
+        <h3>情况二：租房居住（租赁合同在本人名下）</h3>
+      </div>
+    </div>
+    <div class="step-body">
+      <ul class="checklist">
+        <li>准备：<strong>房屋租赁合同</strong>（须包含：房屋地址、租期、出租人和承租人姓名、用途说明）</li>
+        <li>须注明合同剩余租期≥12个月（或签续约协议）</li>
+        <li>如房东同意可顺带准备<strong>房东同意书</strong>（模板：「本人同意承租人XXX在本人房屋[地址]登记个体工商户经营场所，用于从事软件开发及信息技术服务。」+ 房东签字+日期）</li>
+        <li>上传：租赁合同扫描件（全部页面）</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="step-card">
+    <div class="step-header">
+      <div class="step-num">→</div>
+      <div class="step-header-content">
+        <h3>情况三：住在父母/家人房产中</h3>
+      </div>
+    </div>
+    <div class="step-body">
+      <ul class="checklist">
+        <li>准备：<strong>房产证</strong>（产权人名下）拍照</li>
+        <li>准备：<strong>产权人同意书</strong>——模板：「本人XXX（身份证号：XXXX）同意家庭成员XXX在本人所有房屋（地址：XXXX）登记个体工商户经营场所，从事软件开发及互联网信息服务。产权人签字+日期」</li>
+        <li>上传：房产证 + 同意书（部分区可能还需产权人身份证，上传备用）</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="alert alert-gold">
+    <span class="ai">⚠️</span>
+    <p><strong>填写地址格式：</strong>填写时要精确到门牌号，例如「江苏省苏州市工业园区仁爱路XXX号XXX室」。地址须与房产证/租赁合同完全一致，不能简写。</p>
+  </div>
+</section>
+
+<!-- 5 注册后步骤 -->
+<section id="after">
+  <div class="slabel">05 · 注册后必做步骤</div>
+  <h2>拿到营业执照后，还需要完成这些</h2>
+
+  <div class="tl">
+    <div class="ti">
+      <div class="td-dot"></div>
+      <div class="ti-day">执照到手后立即</div>
+      <div class="ti-title">① 税务报到（30天内必须完成）</div>
+      <div class="ti-desc">
+        <strong>法律规定：领照后30天内完成税务登记。</strong><br>
+        1. 登录 <span style="color:var(--blue-l);font-family:monospace">jiangsu.chinatax.gov.cn</span>（江苏省电子税务局）或下载<strong>"江苏税务"APP</strong><br>
+        2. 选择"新办纳税人套餐"，按提示完成：税种核定 → 信息确认 → 申报方式选择<br>
+        3. 选择申报周期（建议季报，减少申报频次）<br>
+        4. 完成后即可申请发票资质
+        <div class="alert alert-red" style="margin-top:8px;">
+          <span class="ai">⚠️</span>
+          <p>逾期未完成税务登记会被处以¥2000以下罚款。30天内必须完成。</p>
+        </div>
+      </div>
+    </div>
+    <div class="ti">
+      <div class="td-dot"></div>
+      <div class="ti-day">税务报到完成后</div>
+      <div class="ti-title">② 申请发票（数电票）</div>
+      <div class="ti-desc">
+        登录江苏电子税务局 → 发票管理 → 票种核定 → 选"数电票"（全面数字化电子发票）<br>
+        服务类型选择：<strong>增值税普通发票（不征税）</strong> 或 <strong>增值税普通发票（3%/1%）</strong><br>
+        审批通常1个工作日内完成。<br>
+        开通后通过电子税务局或"发票助手"APP在线开具，发送给客户邮件或微信即可，无需纸质发票。<br>
+        <span style="font-size:12px;color:var(--text3);">发票服务代码参考：软件开发服务 → 2040101；互联网信息服务 → 3040402</span>
+      </div>
+    </div>
+    <div class="ti">
+      <div class="td-dot"></div>
+      <div class="ti-day">按需（建议尽快）</div>
+      <div class="ti-title">③ 刻制公章</div>
+      <div class="ti-desc">
+        携带营业执照到任意合法刻章店刻制。<br>
+        推荐刻：<strong>公章</strong>（圆形，最常用）+ <strong>个人名章</strong>（方形）<br>
+        费用约¥50-200。某些合同、银行开户需要公章。<br>
+        刻章时须将营业执照报备当地公安机关（刻章店通常代为办理）。
+      </div>
+    </div>
+    <div class="ti">
+      <div class="td-dot"></div>
+      <div class="ti-day">按需（建议开通）</div>
+      <div class="ti-title">④ 开设对公银行账户</div>
+      <div class="ti-desc">
+        个体工商户无法律强制要求开对公账户，但强烈建议。<br>
+        携带材料：营业执照原件（或电子版）+ 身份证 + 公章 → 到银行对公业务窗口预约<br>
+        推荐银行：<strong>招商银行</strong>（网银体验好）、<strong>工商银行</strong>（接受度最广）<br>
+        约需1-2周审批，收到账号后激活网银。<br>
+        <span style="font-size:12px;color:var(--text3);">账户类型：基本存款账户（最常用）；年费约¥100-300</span>
+      </div>
+    </div>
+    <div class="ti">
+      <div class="td-dot"></div>
+      <div class="ti-day">上线App前</div>
+      <div class="ti-title">⑤ ICP备案 + APP备案</div>
+      <div class="ti-desc">
+        详见第7节。需先有营业执照才能以"单位"性质备案，比个人备案权限更多。
+      </div>
+    </div>
+    <div class="ti">
+      <div class="td-dot"></div>
+      <div class="ti-day">每年1月-6月</div>
+      <div class="ti-title">⑥ 工商年报</div>
+      <div class="ti-desc">
+        每年1月1日至6月30日，在<span style="color:var(--blue-l);font-family:monospace">www.gsxt.gov.cn</span>（全国企业信用信息公示系统）提交上年度年报。<br>
+        内容简单（基本信息、是否正常经营），约5分钟填完，免费。<br>
+        <strong>不报年报会被列入经营异常名录，影响后续申请许可证和贷款。</strong>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 6 税务 -->
+<section id="tax">
+  <div class="slabel">06 · 税务指南</div>
+  <h2>2025-2027税收政策（力度很大，务必了解）</h2>
+
+  <div class="alert alert-green">
+    <span class="ai">🎉</span>
+    <p><strong>重大利好：</strong>2023-2027年，个体工商户享受<strong>增值税免税 + 所得税减半</strong>双重优惠，小规模个人开发者实际税负极低。</p>
+  </div>
+
+  <div class="tax-card">
+    <div class="tax-header">增值税（VAT） <span class="tag t-green">通过2027年12月31日</span></div>
+    <div class="tax-body">
+      <div class="tax-row"><span class="tk">季度销售额 ≤ 30万元</span><span class="tv highlight">免征增值税（零税率）</span></div>
+      <div class="tax-row"><span class="tk">月度销售额 ≤ 10万元（月报户）</span><span class="tv highlight">免征增值税</span></div>
+      <div class="tax-row"><span class="tk">超过免税额的部分</span><span class="tv">按1%征收（正常税率3%，减免至1%）</span></div>
+      <div class="tax-row"><span class="tk">一般纳税人门槛</span><span class="tv">年销售额 > 500万元自动升级</span></div>
+      <div class="tax-row"><span class="tk">注意事项</span><span class="tv">开具增值税专用发票的金额不能享受免税，须计入季度限额</span></div>
+    </div>
+  </div>
+
+  <div class="tax-card">
+    <div class="tax-header">经营所得个人所得税 <span class="tag t-green">通过2027年12月31日</span></div>
+    <div class="tax-body">
+      <div class="tax-row"><span class="tk">税率结构</span><span class="tv">5%-35%五级超额累进（见下表）</span></div>
+      <div class="tax-row"><span class="tk">重大优惠：减半征收</span><span class="tv highlight">年应纳税所得额 ≤ 200万元部分，实际缴税 = 正常税额 × 50%</span></div>
+      <div class="tax-row"><span class="tk">基本扣除额</span><span class="tv">每年6万元（即每月5000元）从收入中扣除</span></div>
+      <div class="tax-row"><span class="tk">其他扣除</span><span class="tv">业务相关成本、费用均可扣除（需有凭证）</span></div>
+      <div class="tax-row"><span class="tk">实际操作</span><span class="tv">季度预缴 + 年度汇算清缴（次年3月31日前）</span></div>
+    </div>
+  </div>
+
+  <h3>实际税负示例计算</h3>
+  <div class="tw">
+    <table>
+      <thead><tr><th>年收入</th><th>扣除成本费用</th><th>应税所得</th><th>正常税额</th><th>减半后实缴税</th><th>有效税率</th></tr></thead>
+      <tbody>
+        <tr><td>5万元/年</td><td>1万</td><td>4万元</td><td>¥500</td><td class="cg">¥250</td><td class="cg">0.5%</td></tr>
+        <tr><td>30万/年（季免税边界）</td><td>5万</td><td>25万</td><td>¥39,500</td><td class="cg">¥19,750</td><td class="cg">6.6%</td></tr>
+        <tr><td>50万/年</td><td>10万</td><td>40万</td><td>¥79,500</td><td class="cg">¥39,750</td><td class="cg">7.9%</td></tr>
+        <tr><td>100万/年</td><td>20万</td><td>80万</td><td>¥219,500</td><td class="cg">¥109,750</td><td class="cg">11%</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>完整税率表（经营所得，2025年有效）</h3>
+  <div class="tw">
+    <table>
+      <thead><tr><th>级次</th><th>年应纳税所得额</th><th>税率</th><th>速算扣除数</th><th>减半后实际税率</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td>≤ 30,000元</td><td>5%</td><td>0</td><td class="cg">2.5%</td></tr>
+        <tr><td>2</td><td>30,001 – 90,000元</td><td>10%</td><td>1,500元</td><td class="cg">约5%</td></tr>
+        <tr><td>3</td><td>90,001 – 300,000元</td><td>20%</td><td>10,500元</td><td class="cg">约10%</td></tr>
+        <tr><td>4</td><td>300,001 – 500,000元</td><td>30%</td><td>40,500元</td><td class="cg">约15%</td></tr>
+        <tr><td>5</td><td>> 500,000元</td><td>35%</td><td>65,500元</td><td class="cg">约17.5%</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="alert alert-blue">
+    <span class="ai">📊</span>
+    <p><strong>征收方式：</strong>2025年大多数互联网/软件行业个体工商户被要求采用<strong>查账征收</strong>（按实际利润计税），需要保留收支凭证和账目。每季度末申报预缴，次年3月31日前汇算清缴。建议使用"个体工商户"专用记账App（如算账报税、猪八戒记账等）辅助记录。</p>
+  </div>
+
+  <details>
+    <summary>苏州特有税收优惠（失业人员/应届毕业生/残疾人）</summary>
+    <div class="det-body" style="margin-top:8px;">
+      <p style="font-size:13px;color:var(--text2);">如果你属于以下群体，注册时可向市场监管局/税务局申请额外减税：</p>
+      <ul style="list-style:none;margin-top:8px;">
+        <li style="font-size:13px;color:var(--text2);padding:4px 0;">• <strong>应届高校毕业生（2年内）</strong>：每年最高减税¥14,400，持续3年</li>
+        <li style="font-size:13px;color:var(--text2);padding:4px 0;">• <strong>登记失业人员</strong>：每年最高减税¥14,400，持续3年</li>
+        <li style="font-size:13px;color:var(--text2);padding:4px 0;">• <strong>残疾人</strong>：同上，每年最高减税¥14,400</li>
+        <li style="font-size:13px;color:var(--text2);padding:4px 0;">• <strong>退役士兵</strong>：同上</li>
+      </ul>
+      <p style="font-size:12px;color:var(--text3);margin-top:8px;">减免涵盖：增值税、城市维护建设税、教育费附加、地方教育附加、个人所得税。需在税务局提交相关证明材料申请。</p>
+    </div>
+  </details>
+</section>
+
+<!-- 7 ICP备案 -->
+<section id="icp">
+  <div class="slabel">07 · ICP备案实操</div>
+  <h2>个体工商户身份做网站备案</h2>
+
+  <div class="alert alert-gold">
+    <span class="ai">⚠️</span>
+    <p><strong>关键区别：</strong>以<strong>"个体工商户"（单位）</strong>身份备案，比<strong>"个人"</strong>备案享有更多权限（可以用于商业展示），且在部分云服务商系统中可备案多个域名。主体类型务必选"单位/企业"而非"个人"。</p>
+  </div>
+
+  <div class="tl">
+    <div class="ti">
+      <div class="td-dot"></div>
+      <div class="ti-day">准备阶段（1-2天）</div>
+      <div class="ti-title">购买国内服务器 + 实名注册域名</div>
+      <div class="ti-desc">
+        <strong>服务器：</strong>阿里云、腾讯云均可。须是<strong>中国大陆境内服务器</strong>（选"华东 2（上海）"或"华东 1（杭州）"节点延迟低）。购买后获取"服务识别码"用于备案关联。<br>
+        费用：约¥600-2000/年（入门配置）<br>
+        <strong>域名：</strong>在阿里云/腾讯云购买，注册时填写与营业执照一致的真实姓名和信息（域名实名认证，须与备案主体一致）。<br>
+        .com域名约¥55/年，.cn约¥29/年首年
+      </div>
+    </div>
+    <div class="ti">
+      <div class="td-dot"></div>
+      <div class="ti-day">提交备案（约30分钟填表）</div>
+      <div class="ti-title">通过云服务商提交ICP备案申请</div>
+      <div class="ti-desc">
+        推荐通过阿里云备案系统：<span style="color:var(--blue-l);font-family:monospace">beian.aliyun.com</span><br>
+        <strong>主体类型：选"单位"→ 单位性质选"个体工商户"</strong>（不要选"个人"）<br>
+        填写：<br>
+        &nbsp;&nbsp;• 单位名称：营业执照上的字号全称（如"苏州XX网络工作室"）或"姓名（个体工商户）"<br>
+        &nbsp;&nbsp;• 统一社会信用代码：营业执照上的18位代码<br>
+        &nbsp;&nbsp;• 证件类型：营业执照<br>
+        &nbsp;&nbsp;• 主办单位通信地址：营业执照上的经营场所地址<br>
+        上传：营业执照副本照片 + 法人（经营者）身份证正反面<br>
+        填写网站信息：网站名称、域名、服务内容（如"个人软件工具"或"AI创作平台"）
+      </div>
+    </div>
+    <div class="ti">
+      <div class="td-dot"></div>
+      <div class="ti-day">云服务商初审（1-2工作日）</div>
+      <div class="ti-title">等待初审 → 工信部短信核验</div>
+      <div class="ti-desc">
+        云服务商初审通过后约5分钟，工信部系统发送短信至你的手机，点击链接完成核验（有效期15分钟内操作）。
+      </div>
+    </div>
+    <div class="ti">
+      <div class="td-dot"></div>
+      <div class="ti-day">江苏省管局审核（7-15天）</div>
+      <div class="ti-title">等待管局终审 → 获得备案号</div>
+      <div class="ti-desc">
+        江苏省管局审核周期通常<strong>7-15个工作日</strong>（全国法定上限20个工作日）。<br>
+        审批通过后收到短信，备案号格式：<strong>苏ICP备XXXXXXXX号</strong><br>
+        <strong>必须：</strong>将备案号和超链接放置在网站每个页面底部，可点击跳转至工信部查询页。
+      </div>
+    </div>
+    <div class="ti">
+      <div class="td-dot"></div>
+      <div class="ti-day">ICP备案后30天内</div>
+      <div class="ti-title">公安联网备案</div>
+      <div class="ti-desc">
+        登录 <span style="color:var(--blue-l);font-family:monospace">beian.mps.gov.cn</span>（全国互联网安全管理服务平台）<br>
+        注册账号 → 新增网站 → 填写网站基本信息、负责人信息、服务器IP等<br>
+        审核通常3-5个工作日，完成后获得"公网安备XXXXXXXX号"<br>
+        同样须显示在网站底部（通常放ICP备案号旁边）
+      </div>
+    </div>
+    <div class="ti">
+      <div class="td-dot"></div>
+      <div class="ti-day">发布App之前</div>
+      <div class="ti-title">APP备案（移动应用程序备案）</div>
+      <div class="ti-desc">
+        入口：<span style="color:var(--blue-l);font-family:monospace">beian.miit.gov.cn</span> → "移动互联网应用程序备案"<br>
+        或通过阿里云/腾讯云的APP备案功能提交（界面更友好）<br>
+        需要：App名称、包名（Android Bundle ID）、App签名公钥MD5、服务器IP列表、域名列表、使用的第三方SDK列表<br>
+        提交后约20个工作日审核，完成后在App"关于"页面展示备案编号<br>
+        <strong>注意：</strong>如已有网站ICP备案，App备案主体信息可复用，只需补充App专项信息
+      </div>
+    </div>
+  </div>
+
+  <div class="link-grid" style="margin-top:16px;">
+    <div class="link-card">
+      <div class="link-title">阿里云ICP备案（推荐）</div>
+      <div class="link-url">beian.aliyun.com</div>
+      <div class="link-desc">界面友好，进度跟踪清晰</div>
+    </div>
+    <div class="link-card">
+      <div class="link-title">腾讯云ICP备案</div>
+      <div class="link-url">console.cloud.tencent.com/beian</div>
+      <div class="link-desc">腾讯云服务器用户选此</div>
+    </div>
+    <div class="link-card">
+      <div class="link-title">工信部备案查询</div>
+      <div class="link-url">beian.miit.gov.cn</div>
+      <div class="link-desc">ICP备案 + APP备案官方系统</div>
+    </div>
+    <div class="link-card">
+      <div class="link-title">公安联网备案</div>
+      <div class="link-url">beian.mps.gov.cn</div>
+      <div class="link-desc">ICP备案完成后30天内必须办</div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="slabel">常见问题</div>
+  <h2>个人开发者最常问的问题</h2>
+
+  <div class="qa">
+    <div class="qa-q">Q: 注册地写苏州，我以后可以在外地经营吗？</div>
+    <div class="qa-a">可以。个体工商户注册地与实际经营地不需要强制一致（不像公司有分支机构限制）。你在苏州注册，照样可以为全国乃至全球用户提供线上服务。</div>
+  </div>
+  <div class="qa">
+    <div class="qa-q">Q: 个体工商户能招聘员工吗？</div>
+    <div class="qa-a">可以，法律上不限制雇员数量。但招聘员工后须为其缴纳社保，并到人社局完成用工备案。初期一人独自运营无需操心此项。</div>
+  </div>
+  <div class="qa">
+    <div class="qa-q">Q: 个体工商户什么时候应该升级成有限公司？</div>
+    <div class="qa-a">建议在以下情况之一发生时考虑：①月收入稳定超过2-3万；②需要申请ICP经营许可证（付费网站必须）；③需要在小米/OPPO/vivo应用商店上架；④有融资需求或对外签署重要合同。注册公司本身也是免费的，2025年流程与个体工商户类似，可直接"个转企"（个体转企业），不需要注销重新注册。</div>
+  </div>
+  <div class="qa">
+    <div class="qa-q">Q: 个体工商户经营者需要缴纳社保吗？</div>
+    <div class="qa-a">不强制要求。个体工商户经营者可以选择以<strong>灵活就业人员</strong>身份在户籍地（或苏州）缴纳社保（养老+医疗），也可以不缴。如果此前有单位缴纳的社保，注册个体工商户后可以继续以灵活就业者身份续保。</div>
+  </div>
+  <div class="qa">
+    <div class="qa-q">Q: 注册时没有公章能办银行开户吗？</div>
+    <div class="qa-a">大部分银行对个体工商户开户要求公章。建议拿到营业执照后立即去刻章（¥50-200，1小时出货），然后再预约银行开户。</div>
+  </div>
+  <div class="qa">
+    <div class="qa-q">Q: 家庭地址注册会不会被邻居投诉或街道来查？</div>
+    <div class="qa-a">软件/AI/互联网服务类业务没有物理客流、无噪音、无污染，苏州对此类"居家办公"式个体工商户基本不存在邻居投诉问题。市场监管局偶发实地核查，但针对互联网服务类的核查概率极低。</div>
+  </div>
+  <div class="qa">
+    <div class="qa-q">Q: 注册后长期没有收入，需要申报吗？</div>
+    <div class="qa-a">需要。即使没有收入，每个季度也要进行<strong>零申报</strong>（增值税和个税均申报0）。零申报操作简单，在电子税务局5分钟即可完成。连续3个月未申报会被列入非正常户，处理起来较麻烦。</div>
+  </div>
+  <div class="qa">
+    <div class="qa-q">Q: 注销个体工商户麻烦吗？</div>
+    <div class="qa-a">2025年7月新规大幅简化注销流程：简易注销不再要求提前取得税务注销证明，市场监管局将注销信息通知税务局后，税务局有10天异议期，无异议则注销完成。全程线上，1-2周可完成。</div>
+  </div>
+</section>
+
+</div>
+
+<footer>
+  <div>苏州个体工商户注册实操手册 · 2025年最新版（依据国市监注规〔2025〕103号）</div>
+  <div style="margin-top:6px;">信息来源：国家市场监督管理总局、江苏省市场监管局、苏州市市场监管局、国家税务总局江苏省税务局官方网站、阿里云备案文档</div>
+  <div style="margin-top:6px;color:#4a5568;">本手册信息截至2026年4月，部分政策可能调整。正式申请前建议访问官方网站确认最新要求，或拨打12345热线咨询。</div>
+</footer>
+
+<script>
+const secs=document.querySelectorAll('section[id]');
+const links=document.querySelectorAll('.progress-nav a');
+const obs=new IntersectionObserver(e=>{
+  e.forEach(en=>{
+    if(en.isIntersecting){
+      links.forEach(l=>l.classList.remove('active'));
+      const a=document.querySelector('.progress-nav a[href="#'+en.target.id+'"]');
+      if(a)a.classList.add('active');
+    }
+  });
+},{rootMargin:'-20% 0px -70% 0px'});
+secs.forEach(s=>obs.observe(s));
+links.forEach(l=>l.addEventListener('click',e=>{
+  e.preventDefault();
+  const t=document.querySelector(l.getAttribute('href'));
+  if(t)t.scrollIntoView({behavior:'smooth',block:'start'});
+}));
+</script>
+</body>
+</html>
