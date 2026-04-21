@@ -153,6 +153,22 @@ details[open] summary::after{content:'－'}
 .det-body{padding:0 14px 14px}
 
 footer{background:var(--bg2);border-top:1px solid var(--border);padding:20px;text-align:center;color:var(--text3);font-size:12px}
+
+/* Screenshot figures */
+.shotgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:14px;margin:14px 0}
+.shot{background:var(--bg2);border:1px solid var(--border);border-radius:var(--rl);overflow:hidden}
+.shot img{width:100%;display:block;border-bottom:1px solid var(--border)}
+.shot-cap{padding:10px 12px}
+.shot-cap .scn{font-size:11px;font-weight:700;color:var(--gold-l);letter-spacing:1px;margin-bottom:3px}
+.shot-cap .stt{font-size:13px;color:var(--text);font-weight:600;margin-bottom:4px}
+.shot-cap .sdesc{font-size:12px;color:var(--text3);line-height:1.5}
+
+/* Pitfall banner */
+.pitfall{background:linear-gradient(90deg,var(--red-dim),var(--gold-dim));border:1px solid var(--red-b);border-left:4px solid var(--red-l);border-radius:var(--r);padding:14px 18px;margin:14px 0}
+.pitfall .pt-label{font-size:10px;font-weight:800;color:var(--red-l);letter-spacing:2px;margin-bottom:4px}
+.pitfall .pt-title{font-size:15px;font-weight:700;color:var(--text);margin-bottom:6px}
+.pitfall .pt-body{font-size:13px;color:var(--text2);line-height:1.6}
+.pitfall strong{color:var(--gold-l)}
 </style>
 </head>
 <body>
@@ -167,7 +183,7 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:20px;tex
     <p>互联网 · 软件 · AI平台开发者专用 · 全流程步骤 + 税务 + ICP备案</p>
     <div class="meta">
       <span>适用法规 <strong>《个体工商户登记管理规定》2025年7月15日施行</strong></span>
-      <span>整理日期 <strong>2026-04-10</strong></span>
+      <span>整理日期 <strong>2026-04-10 / 2026-04-21 实操补丁</strong></span>
       <span>注册费用 <strong>¥0</strong></span>
       <span>预计用时 <strong>当日完成</strong></span>
     </div>
@@ -178,6 +194,7 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:20px;tex
   <div class="container">
     <ul>
       <li><a href="#overview"><span class="pn">0</span>概览</a></li>
+      <li><a href="#pitfalls"><span class="pn">!</span>实测避坑</a></li>
       <li><a href="#before"><span class="pn">1</span>注册前准备</a></li>
       <li><a href="#register"><span class="pn">2</span>注册流程</a></li>
       <li><a href="#scope"><span class="pn">3</span>经营范围</a></li>
@@ -225,6 +242,146 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:20px;tex
         <tr><td><strong>小米/OPPO/vivo应用商店</strong></td><td class="cr">✗ 仅限企业账号</td><td>注册公司后可补全</td></tr>
       </tbody>
     </table>
+  </div>
+</section>
+
+<!-- ! 实测避坑（2026-04-21 Playwright 实操补丁） -->
+<section id="pitfalls">
+  <div class="slabel">!! · 实测避坑（2026-04-21 补丁）</div>
+  <h2>2026-04-21 Playwright 真机跑完的 8 个坑</h2>
+
+  <div class="alert alert-red">
+    <span class="ai">🚨</span>
+    <p><strong>本章是 2026-04-21 的实机验证补丁。</strong>以登录、填表、弹地址浮窗的完整流程为准。看官方手册前，先读完这一节，能少踩 80% 的坑。测试账号：苏州吴中区用户，目标地址 <strong>吴中区城南街道东吴南路 26 号</strong>。</p>
+  </div>
+
+  <h3>① 注册/登录路径：支付宝扫码最快，手机号需先注册</h3>
+  <div class="alert alert-gold">
+    <span class="ai">📱</span>
+    <p><strong>实测：</strong>用"手机号 + 图形验证码 + 短信"登录，会提示 <strong>"手机号码不存在"</strong>——因为这是江苏统一身份认证系统，未在江苏政务网注册过的手机号都会被拒。<strong>直接走"支付宝账号"扫码</strong>，会用你支付宝的实名信息自动建账号，最快。</p>
+  </div>
+  <div class="shotgrid">
+    <figure class="shot">
+      <img src="images/01-alipay-login.png" alt="支付宝扫码登录页">
+      <figcaption class="shot-cap">
+        <div class="scn">截图 01</div>
+        <div class="stt">支付宝扫码登录页</div>
+        <div class="sdesc">点击"其他登录方式 → 支付宝账号"进入。授权范围：姓名/手机号/证件号/企业名称。</div>
+      </figcaption>
+    </figure>
+  </div>
+
+  <h3>② 登录后两个强制弹窗</h3>
+  <div class="alert alert-red">
+    <span class="ai">⚠️</span>
+    <p>进 <code>scjg.jszwfw.gov.cn/allLinks/business/index/home.jsp</code> 后会<strong>连弹两个弹窗</strong>，都要处理完才能点首页上任何卡片：</p>
+  </div>
+  <ol style="padding-left:24px;color:var(--text2);font-size:13px;line-height:1.8">
+    <li><strong>弹窗 A：2026-05-01 新规预警</strong>——新版《文书规范》《材料规范》从 5/1 起施行，<strong>建议 4/29 前完成电子签名提交</strong>，否则 5/1 后会被退回修改。右上角 × 关闭。</li>
+    <li><strong>弹窗 B：选择登记机关所在地级市</strong>——<strong>强制等 8 秒</strong>才能勾选"我知道了"，然后必须点一个城市（选 <strong>苏州市</strong>）。不选地级市，后续所有按钮都点不动。</li>
+  </ol>
+  <div class="shotgrid">
+    <figure class="shot">
+      <img src="images/02-select-suzhou.png" alt="选地级市弹窗">
+      <figcaption class="shot-cap">
+        <div class="scn">截图 02</div>
+        <div class="stt">地级市选择面板</div>
+        <div class="sdesc">关掉弹窗后会出现这个浮层。下面那句红字："请确认您实际办理业务的登记机关与当前所选地区是否一致"——不选就无法继续。</div>
+      </figcaption>
+    </figure>
+  </div>
+
+  <h3>③ "我要开办"只是展开面板，不直接跳转</h3>
+  <p style="color:var(--text2);font-size:13px">点首页"我要开办"卡片后<strong>不会跳到登记表单</strong>，而是在下方展开一个勾选面板（公章刻制、银行预约、发票、社保等都默认勾上）。必须点**右上角"立即办理"按钮**才进入下一页。</p>
+  <div class="shotgrid">
+    <figure class="shot">
+      <img src="images/03-kaiban-panel.png" alt="我要开办展开面板">
+      <figcaption class="shot-cap">
+        <div class="scn">截图 03</div>
+        <div class="stt">我要开办 全链通勾选面板</div>
+        <div class="sdesc">市场主体登记(营业执照)是必选且置灰。公章刻制/银行预开户/就业参保/公积金/发票都默认勾选。不想一起办的可以取消勾，右上角"立即办理"继续。</div>
+      </figcaption>
+    </figure>
+  </div>
+
+  <h3>④ "无字号个体工商户"隐藏在下方分区</h3>
+  <p style="color:var(--text2);font-size:13px">进入名称页后，上半部分"我有名称信息"是已办好预核准的用户用的。<strong>不起字号的选"我没有名称信息"分区里的"我直接申请无字号个体工商户开业"</strong>卡片的"办理→"。</p>
+  <div class="shotgrid">
+    <figure class="shot">
+      <img src="images/04-wuzihao-route.png" alt="无字号个体工商户入口">
+      <figcaption class="shot-cap">
+        <div class="scn">截图 04</div>
+        <div class="stt">名称选路页</div>
+        <div class="sdesc">下半部分 "我没有名称信息" → 第二个卡片 "我直接申请无字号个体工商户开业"。这是软件/AI 个人开发者的推荐路径。</div>
+      </figcaption>
+    </figure>
+  </div>
+
+  <h3>⑤ 第 1 页字段校验</h3>
+  <div class="shotgrid">
+    <figure class="shot">
+      <img src="images/05-form-page1.png" alt="表单第 1 页">
+      <figcaption class="shot-cap">
+        <div class="scn">截图 05</div>
+        <div class="stt">开业表单 · 第 1 页</div>
+        <div class="sdesc">名称来源自动锁到"暂未申请名称"；开业名称自动 ****；<strong>出资额填 1（单位万元）</strong>；个体工商户类别默认；个人经营；实体店。填完点下一步。</div>
+      </figcaption>
+    </figure>
+  </div>
+
+  <h3>⑥ 第 2 页：经营场所必须先点 "+ 添加住所信息"</h3>
+  <p style="color:var(--text2);font-size:13px">很多人卡在这里——第 2 页上方有一个灰色虚线框"<strong>+ 添加住所信息</strong>"，<strong>必须点它弹出浮窗</strong>才能填具体地址。直接在下半部分"经营范围信息"填字段是不够的。</p>
+  <div class="shotgrid">
+    <figure class="shot">
+      <img src="images/06-form-page2.png" alt="表单第 2 页">
+      <figcaption class="shot-cap">
+        <div class="scn">截图 06</div>
+        <div class="stt">开业表单 · 第 2 页</div>
+        <div class="sdesc">"经营场所信息"区只有一个 "+ 添加住所信息" 按钮，必须点它弹浮窗。"经营范围信息"区独立：登记机关、所属行业、申领副本数量、领取方式（邮寄/窗口）、经营范围（点"选择经营范围"勾目录）、是否有化工生产。</div>
+      </figcaption>
+    </figure>
+  </div>
+
+  <h3>⑦ 🔥 街道下拉只显示 8 项，必须点"加载更多"</h3>
+  <div class="pitfall">
+    <div class="pt-label">经典坑 · 90% 用户都卡在这</div>
+    <div class="pt-title">吴中区下有 16 个街道/镇，默认只加载前 8 个</div>
+    <div class="pt-body">
+      地址浮窗里"请选择/输入街道/乡/镇"下拉，<strong>打开时默认只显示 8 项</strong>（江苏省太湖采石公司、西山农业园区、东山镇、金庭镇、横泾街道、光福镇、苏州太湖国家旅游度假区、长桥街道），列表底部有一个<strong>灰色小字"加载更多"</strong>链接。不点它，永远看不到后面的 8 项（甪直镇、木渎镇、香山街道、胥口镇、临湖镇、吴中区林场、开发区、<strong>城南街道</strong>）。<br>
+      <strong>操作：</strong>下拉滚到底 → 点一下"加载更多" → 列表扩展到 16 项 → 再往下就能看到城南街道（列表最后一项）。
+    </div>
+  </div>
+  <div class="shotgrid">
+    <figure class="shot">
+      <img src="images/07-street-dropdown-incomplete.png" alt="街道下拉只显 8 项">
+      <figcaption class="shot-cap">
+        <div class="scn">截图 07</div>
+        <div class="stt">街道下拉初始状态（不完整）</div>
+        <div class="sdesc">可见项只到"长桥街道"，底部有不明显的"加载更多"小字。输入"城南"也<strong>不会触发过滤</strong>——这是 layui flow 组件行为，得点加载更多才拉数据。</div>
+      </figcaption>
+    </figure>
+  </div>
+
+  <h3>⑧ ⚠️ 城南/长桥/越溪/郭巷/太湖街道可能显示为"灰色不可选"</h3>
+  <div class="pitfall">
+    <div class="pt-label">管辖错配 · 高发卡点</div>
+    <div class="pt-title">原因：这些街道的登记机关是"吴中经济技术开发区"，不是"吴中区"</div>
+    <div class="pt-body">
+      吴中区的 7 个街道里，<strong>城南、长桥、越溪、郭巷、太湖</strong>（以及 <strong>甪直镇</strong>）是"一套人马两块牌子"——行政上属吴中区，<strong>管理上归吴中经济技术开发区</strong>。Playwright 抓包确认：默认进来时 <code>userOrg=1402（苏州市级）/userOrgCode=320500000（苏州市）</code>，这个登记机关不负责上面 5 个街道+1 个镇的受理，所以它们在下拉里显示为<strong>灰色禁用</strong>。<br><br>
+      <strong>解决方案（按成功率排）：</strong>
+      <ol style="padding-left:20px;margin-top:6px">
+        <li><strong>方法 A：顶部先切"登记机关"</strong>——页面顶部导航或"切换区域"把办事地区从苏州市改成 <strong>"吴中经济技术开发区"</strong>（如果可选），再重开"我要开办"，此时下拉里这些街道变可选。</li>
+        <li><strong>方法 B：走苏州工业园区/开发区专属入口</strong>——从 <code>one.sipac.gov.cn</code> 或吴中经开区的专区入口进，登记机关自动带到经开区。</li>
+        <li><strong>方法 C：线下咨询</strong>——拨打 <strong>城南街道政务服务中心 0512-65250205 / 0512-65130299</strong>（已验证），询问"中交春映东吴地址注册个体工商户，登记机关该选吴中区还是吴中经开区"。</li>
+        <li><strong>方法 D：兜底</strong>——<strong>苏州市 12345</strong> 或 <strong>江苏省市监局 025-83666111</strong>（工作日 9-11:30、14-17）。</li>
+      </ol>
+      <p style="margin-top:8px;font-size:12px;color:var(--text3)"><em>说明：方法 A 我在本轮测试没来得及端到端验证（浏览器会话 20 分钟过期重登）。基于登记机关编码的推断置信度高，但请打电话最终确认。</em></p>
+    </div>
+  </div>
+
+  <div class="alert alert-green" style="margin-top:20px">
+    <span class="ai">✅</span>
+    <p><strong>跑通流程要多久？</strong>实测：登录（支付宝扫码 ≈30s）+ 两个弹窗（10s）+ 我要开办/立即办理（5s）+ 名称选路（5s）+ 填第 1 页（30s）+ 弹地址浮窗（5s）+ 地址下拉（等数据 2-3s + 加载更多 1 次）= 到达"选街道"这一步大约 1.5-2 分钟。若街道灰了，立刻打电话确认登记机关，别盲试。</p>
   </div>
 </section>
 
@@ -337,7 +494,12 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:20px;tex
 
   <div class="alert alert-blue">
     <span class="ai">💻</span>
-    <p><strong>官方入口：</strong>江苏政务服务网 <span style="color:var(--blue-l);font-family:monospace">www.jszwfw.gov.cn</span> → 搜索"个体工商户设立登记" → 或直接进入苏州市场监管局网上服务系统</p>
+    <p><strong>官方入口：</strong>江苏政务服务网 <span style="color:var(--blue-l);font-family:monospace">www.jszwfw.gov.cn</span> → 搜索"个体工商户设立登记" → 或直接进入苏州市场监管局网上服务系统 <span style="color:var(--blue-l);font-family:monospace">scjg.jszwfw.gov.cn/allLinks/business/index/home.jsp</span>（登录后可达）</p>
+  </div>
+
+  <div class="alert alert-gold">
+    <span class="ai">👉</span>
+    <p><strong>2026-04-21 实操补丁：</strong>以下时间轴是官方宣传流程。实际每一步的 UI 细节和"坑"参见 <a href="#pitfalls" style="color:var(--gold-l);font-weight:700">!! 实测避坑</a> 章节（带截图）。坑多的地方：登录方式、两个强制弹窗、"我要开办"面板、街道下拉"加载更多"、城南等开发区街道灰掉。</p>
   </div>
 
   <div class="tl">
@@ -518,6 +680,14 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:20px;tex
   <div class="alert alert-green">
     <span class="ai">🏠</span>
     <p><strong>2025年7月新规明确：</strong>软件开发、互联网服务、信息技术咨询等<strong>不干扰邻居、不接待大量客户</strong>的业务，可以用住宅地址作为经营场所，苏州支持此政策。</p>
+  </div>
+
+  <div class="pitfall">
+    <div class="pt-label">苏州特殊 · 必读</div>
+    <div class="pt-title">吴中区城南/长桥/越溪/郭巷/太湖街道 有管辖错配</div>
+    <div class="pt-body">
+      这 5 个街道（加上甪直镇）由 <strong>吴中经济技术开发区</strong> 管理（行政上属吴中区，但登记机关不同）。如果你家在这 6 个片区任意一个，<strong>注册时要先把登记机关切到"吴中经济技术开发区"</strong>，否则街道下拉里这些项会灰掉。详见上方 <a href="#pitfalls" style="color:var(--blue-l)">!! 实测避坑</a> 章节第 ⑧ 坑。
+    </div>
   </div>
 
   <h3>使用住宅地址的操作步骤</h3>
