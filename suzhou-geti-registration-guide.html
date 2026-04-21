@@ -318,9 +318,9 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:20px;tex
         </tr>
         <tr>
           <td><strong>要起字号</strong><br>（营业执照显示"苏州XX工作室（个体工商户）"）</td>
-          <td class="cr">⚠️ 企业全链通里<strong>没有个体户字号入口</strong>！<br>"我没有名称，去名称自主申报"只给公司/合伙企业用（企业类型下拉无个体工商户选项）。</td>
-          <td>走其他系统或先无字号再变更</td>
-          <td class="cr">见下方红色警示</td>
+          <td class="cg">✅ 正确入口：<strong>首页"其他业务"区 → "新设名称申报"</strong> → 顶部切到"个体工商户"单选 → 填字号/行业/区划 → 核准拿预选号</td>
+          <td>先申报字号拿预选号</td>
+          <td class="co">≈1 小时（自动核准）</td>
         </tr>
         <tr>
           <td><strong>已有预选号</strong><br>（之前通过苏州其他入口申报过）</td>
@@ -331,15 +331,44 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:20px;tex
       </tbody>
     </table>
   </div>
-  <div class="alert alert-red" style="margin-top:10px">
-    <span class="ai">🚨</span>
-    <p><strong>⚠️ 2026-04-21 实测修正：</strong>"我没有名称，去名称自主申报"<strong>不支持个体工商户</strong>！这条入口会跳到 <code>nameDeclarationSl.jsp</code>，里面"请选择具体企业类型"下拉只有：公司、非公司企业法人、普通合伙、特殊普通合伙、有限合伙、个人独资企业、港澳台合伙、非公司外商投资等 <strong>14 项，无"个体工商户"</strong>。它是给公司/合伙企业用的。<br><br>
-    <strong>个体工商户的实际路径：</strong>江苏省企业全链通目前<strong>只开放"无字号"快速通道</strong>（即 <code>gthDec()</code> 入口，<code>?param=no</code>，第 1 页的"名称来源"被锁到"暂未申请名称"）。想要字号的个体户，走苏州特定入口：
-    <ol style="padding-left:20px;margin-top:6px">
-      <li><strong>方法 A（推荐）：</strong>先注册无字号个体户（当场拿执照）→ 之后办<strong>变更登记</strong>加字号（市监局受理，免费，约 1-3 工作日）。优点：不用等字号核准，立刻能收款开票。</li>
-      <li><strong>方法 B：</strong>打电话 <strong>苏小福 sst.suzhou.gov.cn</strong> 咨询/或拨 <strong>12345</strong> 问"个体工商户字号自主申报在哪个系统"——苏州有独立的"个体工商户名称自主申报"入口，可能在苏小福专区或吴中区专属入口内。</li>
-      <li><strong>查重工具：</strong><code>wsdj.samr.gov.cn/saicmccx/</code> 提前查字号是否重名。字号格式：<code>苏州市 + [字号] + [行业] + (个体工商户)</code>，如 <code>苏州市启云软件工作室（个体工商户）</code>。</li>
-    </ol></p>
+  <div class="alert alert-green" style="margin-top:10px">
+    <span class="ai">✅</span>
+    <p><strong>2026-04-21 实测确认 · 字号申报入口已找到！</strong>个体工商户申报字号的正确入口<strong>不是</strong>名称路由页下半分区那个"我没有名称，去名称自主申报"（那个只给公司/合伙企业用），而是<strong>首页右下角"其他业务"区的"新设名称申报"卡片</strong>。</p>
+  </div>
+
+  <h4 style="margin-top:14px">✅ 有字号个体工商户的正确流程（2026-04-21 Playwright 实测走通）</h4>
+  <ol style="padding-left:20px;font-size:13px;color:var(--text2);line-height:1.7">
+    <li><strong>入口</strong>：登录 <code>scjg.jszwfw.gov.cn/allLinks/business/index/home.jsp</code> → 切换到苏州市 → 下拉到"<strong>其他业务</strong>"区域 → 点 <strong>"新设名称申报"</strong> 卡片（不是"我要开办"！）</li>
+    <li><strong>跳转到名称申报页</strong> <code>nameDeclarationSl.jsp?from=1</code></li>
+    <li><strong>关键步骤 · 切换市场主体类型</strong>："我要开办（新设）的是" 默认是 <strong>"企业（含内资、外资）"</strong>——<strong>必须改选"个体工商户"</strong>单选按钮！切换后表单会重新渲染为个体户专用版。</li>
+    <li><strong>关系统使用须知弹窗</strong>：勾选"我已阅读"（如果按钮看起来灰色不能点，等几秒——有倒计时）</li>
+    <li><strong>填个体户名称字段</strong>（顺序重要，字段间有联动）：
+      <ul style="padding-left:16px;margin-top:4px">
+        <li><strong>具体企业类型</strong>：下拉选"个体工商户"</li>
+        <li><strong>是否为分支机构</strong>：否</li>
+        <li><strong>其住所（经营场所）在</strong>：苏州市（下拉选）</li>
+        <li><strong>注册资本（金）</strong>：人民币 + 1 万（可填 1-5 万，仅参考）</li>
+        <li><strong>行政区划</strong>：江苏省苏州市吴中区（或你所在的区）</li>
+        <li><strong>字号</strong>：输入 3-5 个候选字号前 <strong>先去 <code>wsdj.samr.gov.cn/saicmccx/</code> 查重</strong>。格式：<code>[字号]</code> 两个字以上，不能带"中国/国家"等敏感词。例 <code>启云</code> / <code>睿灵</code> / <code>拓新</code>。可勾选"使用投资人姓名作为企业字号"直接用你的名字</li>
+        <li><strong>行业或者经营特点</strong>：从下拉选择标准表述，如 <code>软件</code> / <code>互联网信息服务</code> / <code>人工智能应用</code> 等</li>
+        <li><strong>组织形式</strong>：个体工商户</li>
+        <li><strong>登记机关</strong>：选对应辖区（吴中区 → 苏州市吴中区市场监督管理局）</li>
+      </ul>
+    </li>
+    <li><strong>底部实时预览"请选择您的企业名称"</strong>区会根据上面输入自动生成候选全称（例：<code>苏州市启云软件工作室（个体工商户）</code>）。勾选 1 个作为最终名称。</li>
+    <li><strong>下一步 → 电子签名 → 提交</strong>。系统约 <strong>1 小时内自动比对核准</strong>（大部分情况立刻通过）。</li>
+    <li><strong>核准后拿到预选号</strong>（格式 <code>****Z*****</code>，Z 大写，60 天有效期）</li>
+    <li><strong>回 "我要开办 / 立即办理"</strong> → 名称路由页 → <strong>上半分区"我有名称信息"</strong> → 填 <strong>预选号</strong> + <strong>企业全称</strong>（从上一步拿的）→ 下一步进入开业表单（与无字号流程第 1/2 页完全相同，按上面 ⑤⑥⑦⑧ 流程走）</li>
+  </ol>
+  <div class="shotgrid">
+    <figure class="shot">
+      <img src="images/10-gtgsh-name-declaration.png" alt="个体工商户字号申报表单">
+      <figcaption class="shot-cap">
+        <div class="scn">截图 10</div>
+        <div class="stt">✅ 个体工商户名称自主申报表单（切换后）</div>
+        <div class="sdesc">顶部 radio 切到"个体工商户"后，表单会重新渲染：具体企业类型 / 是否分支机构 / 住所 / 注册资本 / <strong>行政区划 / 字号 / 行业或经营特点 / 组织形式</strong> / 使用投资人姓名作字号 / 登记机关。底部会实时自动生成候选企业名称。</div>
+      </figcaption>
+    </figure>
   </div>
   <div class="shotgrid">
     <figure class="shot">
