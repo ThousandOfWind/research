@@ -183,7 +183,7 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:20px;tex
     <p>互联网 · 软件 · AI平台开发者专用 · 全流程步骤 + 税务 + ICP备案</p>
     <div class="meta">
       <span>适用法规 <strong>《个体工商户登记管理规定》2025年7月15日施行</strong></span>
-      <span>整理日期 <strong>2026-04-10 / 2026-04-21 实操补丁</strong></span>
+      <span>整理日期 <strong>2026-04-21</strong></span>
       <span>注册费用 <strong>¥0</strong></span>
       <span>预计用时 <strong>当日完成</strong></span>
     </div>
@@ -194,7 +194,6 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:20px;tex
   <div class="container">
     <ul>
       <li><a href="#overview"><span class="pn">0</span>概览</a></li>
-      <li><a href="#pitfalls"><span class="pn">!</span>实测避坑</a></li>
       <li><a href="#before"><span class="pn">1</span>注册前准备</a></li>
       <li><a href="#register"><span class="pn">2</span>注册流程</a></li>
       <li><a href="#scope"><span class="pn">3</span>经营范围</a></li>
@@ -242,228 +241,6 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:20px;tex
         <tr><td><strong>小米/OPPO/vivo应用商店</strong></td><td class="cr">✗ 仅限企业账号</td><td>注册公司后可补全</td></tr>
       </tbody>
     </table>
-  </div>
-</section>
-
-<!-- ! 实测避坑（2026-04-21 Playwright 实操补丁） -->
-<section id="pitfalls">
-  <div class="slabel">!! · 实测避坑（2026-04-21 补丁）</div>
-  <h2>2026-04-21 Playwright 真机跑完的 8 个坑</h2>
-
-  <div class="alert alert-red">
-    <span class="ai">🚨</span>
-    <p><strong>本章是 2026-04-21 的实机验证补丁。</strong>以登录、填表、弹地址浮窗的完整流程为准。看官方手册前，先读完这一节，能少踩 80% 的坑。测试账号：苏州吴中区用户，目标地址 <strong>吴中区城南街道东吴南路 26 号</strong>。</p>
-  </div>
-
-  <h3>① 注册/登录路径：支付宝扫码最快，手机号需先注册</h3>
-  <div class="alert alert-gold">
-    <span class="ai">📱</span>
-    <p><strong>实测：</strong>用"手机号 + 图形验证码 + 短信"登录，会提示 <strong>"手机号码不存在"</strong>——因为这是江苏统一身份认证系统，未在江苏政务网注册过的手机号都会被拒。<strong>直接走"支付宝账号"扫码</strong>，会用你支付宝的实名信息自动建账号，最快。</p>
-  </div>
-  <div class="shotgrid">
-    <figure class="shot">
-      <img src="images/01-alipay-login.png" alt="支付宝扫码登录页">
-      <figcaption class="shot-cap">
-        <div class="scn">截图 01</div>
-        <div class="stt">支付宝扫码登录页</div>
-        <div class="sdesc">点击"其他登录方式 → 支付宝账号"进入。授权范围：姓名/手机号/证件号/企业名称。</div>
-      </figcaption>
-    </figure>
-  </div>
-
-  <h3>② 登录后两个强制弹窗</h3>
-  <div class="alert alert-red">
-    <span class="ai">⚠️</span>
-    <p>进 <code>scjg.jszwfw.gov.cn/allLinks/business/index/home.jsp</code> 后会<strong>连弹两个弹窗</strong>，都要处理完才能点首页上任何卡片：</p>
-  </div>
-  <ol style="padding-left:24px;color:var(--text2);font-size:13px;line-height:1.8">
-    <li><strong>弹窗 A：2026-05-01 新规预警</strong>——新版《文书规范》《材料规范》从 5/1 起施行，<strong>建议 4/29 前完成电子签名提交</strong>，否则 5/1 后会被退回修改。右上角 × 关闭。</li>
-    <li><strong>弹窗 B：选择登记机关所在地级市</strong>——<strong>强制等 8 秒</strong>才能勾选"我知道了"，然后必须点一个城市（选 <strong>苏州市</strong>）。不选地级市，后续所有按钮都点不动。</li>
-  </ol>
-  <div class="shotgrid">
-    <figure class="shot">
-      <img src="images/02-select-suzhou.png" alt="选地级市弹窗">
-      <figcaption class="shot-cap">
-        <div class="scn">截图 02</div>
-        <div class="stt">地级市选择面板</div>
-        <div class="sdesc">关掉弹窗后会出现这个浮层。下面那句红字："请确认您实际办理业务的登记机关与当前所选地区是否一致"——不选就无法继续。</div>
-      </figcaption>
-    </figure>
-  </div>
-
-  <h3>③ "我要开办"只是展开面板，不直接跳转</h3>
-  <p style="color:var(--text2);font-size:13px">点首页"我要开办"卡片后<strong>不会跳到登记表单</strong>，而是在下方展开一个勾选面板（公章刻制、银行预约、发票、社保等都默认勾上）。必须点**右上角"立即办理"按钮**才进入下一页。</p>
-  <div class="shotgrid">
-    <figure class="shot">
-      <img src="images/03-kaiban-panel.png" alt="我要开办展开面板">
-      <figcaption class="shot-cap">
-        <div class="scn">截图 03</div>
-        <div class="stt">我要开办 全链通勾选面板</div>
-        <div class="sdesc">市场主体登记(营业执照)是必选且置灰。公章刻制/银行预开户/就业参保/公积金/发票都默认勾选。不想一起办的可以取消勾，右上角"立即办理"继续。</div>
-      </figcaption>
-    </figure>
-  </div>
-
-  <h3>④ 名称选路页：有字号/无字号走两条完全不同的路</h3>
-  <p style="color:var(--text2);font-size:13px">进入名称选路页后<strong>千万别点错</strong>——上下两个分区不等价，是<strong>两条完全不同的流程</strong>：</p>
-  <div class="tw" style="margin-top:10px">
-    <table>
-      <thead><tr><th>你的情况</th><th>正确入口</th><th>前置步骤</th><th>耗时</th></tr></thead>
-      <tbody>
-        <tr>
-          <td><strong>不起字号</strong><br>（营业执照显示"张三（个体工商户）"）</td>
-          <td class="cg">下半分区 → <strong>我直接申请无字号个体工商户开业</strong> → 办理</td>
-          <td>无</td>
-          <td class="cg">最快，当场进表单</td>
-        </tr>
-        <tr>
-          <td><strong>要起字号</strong><br>（营业执照显示"苏州XX工作室（个体工商户）"）</td>
-          <td class="cg">✅ 正确入口：<strong>首页"其他业务"区 → "新设名称申报"</strong> → 顶部切到"个体工商户"单选 → 填字号/行业/区划 → 核准拿预选号</td>
-          <td>先申报字号拿预选号</td>
-          <td class="co">≈1 小时（自动核准）</td>
-        </tr>
-        <tr>
-          <td><strong>已有预选号</strong><br>（之前通过苏州其他入口申报过）</td>
-          <td class="cg">上半分区 → <strong>我有名称信息</strong> → 填预选号 + 企业名称 → 下一步</td>
-          <td>手边要有预选号</td>
-          <td class="cg">最快</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-  <div class="alert alert-green" style="margin-top:10px">
-    <span class="ai">✅</span>
-    <p><strong>2026-04-21 实测确认 · 字号申报入口已找到！</strong>个体工商户申报字号的正确入口<strong>不是</strong>名称路由页下半分区那个"我没有名称，去名称自主申报"（那个只给公司/合伙企业用），而是<strong>首页右下角"其他业务"区的"新设名称申报"卡片</strong>。</p>
-  </div>
-
-  <h4 style="margin-top:14px">✅ 有字号个体工商户的正确流程（2026-04-21 Playwright 实测走通）</h4>
-  <ol style="padding-left:20px;font-size:13px;color:var(--text2);line-height:1.7">
-    <li><strong>入口</strong>：登录 <code>scjg.jszwfw.gov.cn/allLinks/business/index/home.jsp</code> → 切换到苏州市 → 下拉到"<strong>其他业务</strong>"区域 → 点 <strong>"新设名称申报"</strong> 卡片（不是"我要开办"！）</li>
-    <li><strong>跳转到名称申报页</strong> <code>nameDeclarationSl.jsp?from=1</code></li>
-    <li><strong>关键步骤 · 切换市场主体类型</strong>："我要开办（新设）的是" 默认是 <strong>"企业（含内资、外资）"</strong>——<strong>必须改选"个体工商户"</strong>单选按钮！切换后表单会重新渲染为个体户专用版。</li>
-    <li><strong>关系统使用须知弹窗</strong>：勾选"我已阅读"（如果按钮看起来灰色不能点，等几秒——有倒计时）</li>
-    <li><strong>填个体户名称字段</strong>（顺序重要，字段间有联动）：
-      <ul style="padding-left:16px;margin-top:4px">
-        <li><strong>具体企业类型</strong>：下拉选"个体工商户"</li>
-        <li><strong>是否为分支机构</strong>：否</li>
-        <li><strong>其住所（经营场所）在</strong>：苏州市（下拉选）</li>
-        <li><strong>注册资本（金）</strong>：人民币 + 1 万（可填 1-5 万，仅参考）</li>
-        <li><strong>行政区划</strong>：江苏省苏州市吴中区（或你所在的区）</li>
-        <li><strong>字号</strong>：输入 3-5 个候选字号前 <strong>先去 <code>wsdj.samr.gov.cn/saicmccx/</code> 查重</strong>。格式：<code>[字号]</code> 两个字以上，不能带"中国/国家"等敏感词。例 <code>启云</code> / <code>睿灵</code> / <code>拓新</code>。可勾选"使用投资人姓名作为企业字号"直接用你的名字</li>
-        <li><strong>行业或者经营特点</strong>：从下拉选择标准表述，如 <code>软件</code> / <code>互联网信息服务</code> / <code>人工智能应用</code> 等</li>
-        <li><strong>组织形式</strong>：个体工商户</li>
-        <li><strong>登记机关</strong>：选对应辖区（吴中区 → 苏州市吴中区市场监督管理局）</li>
-      </ul>
-    </li>
-    <li><strong>底部实时预览"请选择您的企业名称"</strong>区会根据上面输入自动生成候选全称（例：<code>苏州市启云软件工作室（个体工商户）</code>）。勾选 1 个作为最终名称。</li>
-    <li><strong>下一步 → 电子签名 → 提交</strong>。系统约 <strong>1 小时内自动比对核准</strong>（大部分情况立刻通过）。</li>
-    <li><strong>核准后拿到预选号</strong>（格式 <code>****Z*****</code>，Z 大写，60 天有效期）</li>
-    <li><strong>回 "我要开办 / 立即办理"</strong> → 名称路由页 → <strong>上半分区"我有名称信息"</strong> → 填 <strong>预选号</strong> + <strong>企业全称</strong>（从上一步拿的）→ 下一步进入开业表单（与无字号流程第 1/2 页完全相同，按上面 ⑤⑥⑦⑧ 流程走）</li>
-  </ol>
-  <div class="shotgrid">
-    <figure class="shot">
-      <img src="images/10-gtgsh-name-declaration.png" alt="个体工商户字号申报表单">
-      <figcaption class="shot-cap">
-        <div class="scn">截图 10</div>
-        <div class="stt">✅ 个体工商户名称自主申报表单（切换后）</div>
-        <div class="sdesc">顶部 radio 切到"个体工商户"后，表单会重新渲染：具体企业类型 / 是否分支机构 / 住所 / 注册资本 / <strong>行政区划 / 字号 / 行业或经营特点 / 组织形式</strong> / 使用投资人姓名作字号 / 登记机关。底部会实时自动生成候选企业名称。</div>
-      </figcaption>
-    </figure>
-  </div>
-  <div class="shotgrid">
-    <figure class="shot">
-      <img src="images/04-wuzihao-route.png" alt="名称路由页">
-      <figcaption class="shot-cap">
-        <div class="scn">截图 04</div>
-        <div class="stt">名称选路页（两个分区）</div>
-        <div class="sdesc">上半"我有名称信息"（需预选号）；下半"我没有名称信息"包含 4 个卡片：① 我没有名称，去名称自主申报（<strong>有字号走这个</strong>）；② 隶属企业申请分支机构；③ <strong>我直接申请无字号个体工商户开业</strong>（无字号走这个）；④ 外国企业相关业务。</div>
-      </figcaption>
-    </figure>
-  </div>
-  <div class="alert alert-blue">
-    <span class="ai">💡</span>
-    <p>无论有字号还是无字号，<strong>从第 2 页（经营场所/经营范围）开始两边表单完全相同</strong>。下文 ⑤⑥⑦⑧ 描述的坑对两条路都适用。</p>
-  </div>
-
-  <h3>⑤ 第 1 页字段校验</h3>
-  <div class="shotgrid">
-    <figure class="shot">
-      <img src="images/05-form-page1.png" alt="表单第 1 页">
-      <figcaption class="shot-cap">
-        <div class="scn">截图 05</div>
-        <div class="stt">开业表单 · 第 1 页</div>
-        <div class="sdesc">名称来源自动锁到"暂未申请名称"；开业名称自动 ****；<strong>出资额填 1（单位万元）</strong>；个体工商户类别默认；个人经营；实体店。填完点下一步。</div>
-      </figcaption>
-    </figure>
-  </div>
-
-  <h3>⑥ 第 2 页：经营场所必须先点 "+ 添加住所信息"</h3>
-  <p style="color:var(--text2);font-size:13px">很多人卡在这里——第 2 页上方有一个灰色虚线框"<strong>+ 添加住所信息</strong>"，<strong>必须点它弹出浮窗</strong>才能填具体地址。直接在下半部分"经营范围信息"填字段是不够的。</p>
-  <div class="shotgrid">
-    <figure class="shot">
-      <img src="images/06-form-page2.png" alt="表单第 2 页">
-      <figcaption class="shot-cap">
-        <div class="scn">截图 06</div>
-        <div class="stt">开业表单 · 第 2 页</div>
-        <div class="sdesc">"经营场所信息"区只有一个 "+ 添加住所信息" 按钮，必须点它弹浮窗。"经营范围信息"区独立：登记机关、所属行业、申领副本数量、领取方式（邮寄/窗口）、经营范围（点"选择经营范围"勾目录）、是否有化工生产。</div>
-      </figcaption>
-    </figure>
-  </div>
-
-  <h3>⑦ 🔥 街道下拉只显示 8 项，必须点"加载更多"</h3>
-  <div class="pitfall">
-    <div class="pt-label">经典坑 · 90% 用户都卡在这</div>
-    <div class="pt-title">吴中区下有 16 个街道/镇，默认只加载前 8 个</div>
-    <div class="pt-body">
-      地址浮窗里"请选择/输入街道/乡/镇"下拉，<strong>打开时默认只显示 8 项</strong>（江苏省太湖采石公司、西山农业园区、东山镇、金庭镇、横泾街道、光福镇、苏州太湖国家旅游度假区、长桥街道），列表底部有一个<strong>灰色小字"加载更多"</strong>链接。不点它，永远看不到后面的 8 项（甪直镇、木渎镇、香山街道、胥口镇、临湖镇、吴中区林场、开发区、<strong>城南街道</strong>）。<br>
-      <strong>操作：</strong>下拉滚到底 → 点一下"加载更多" → 列表扩展到 16 项 → 再往下就能看到城南街道（列表最后一项）。
-    </div>
-  </div>
-  <div class="shotgrid">
-    <figure class="shot">
-      <img src="images/07-street-dropdown-incomplete.png" alt="街道下拉只显 8 项">
-      <figcaption class="shot-cap">
-        <div class="scn">截图 07</div>
-        <div class="stt">街道下拉初始状态（不完整）</div>
-        <div class="sdesc">可见项只到"长桥街道"，底部有不明显的"加载更多"小字。输入"城南"也<strong>不会触发过滤</strong>——这是 layui flow 组件行为，得点加载更多才拉数据。</div>
-      </figcaption>
-    </figure>
-  </div>
-
-  <h3>⑧ ✅ 辟谣：城南街道不会变灰——误判根因其实是⑦</h3>
-  <div class="pitfall" style="background:linear-gradient(90deg,var(--green-dim),var(--blue-dim));border-color:var(--green-b);border-left-color:var(--green-l)">
-    <div class="pt-label" style="color:var(--green-l)">2026-04-21 端到端验证 · 更正</div>
-    <div class="pt-title">吴中区下 16 个街道/镇在 DOM 里<strong>没有任何 disabled 样式</strong>，城南街道可以直接点选</div>
-    <div class="pt-body">
-      之前猜测"城南/长桥/越溪/郭巷/太湖属吴中经济技术开发区管，所以在下拉里变灰"——<strong>这个推断错误</strong>。Playwright 深挖 DOM 确认：<br><br>
-      • 吴中区下 16 个街道/镇的 <code>&lt;li&gt;</code> 元素 HTML 完全相同（<code>style="cursor:pointer;font-size:16px;"</code>），<strong>没有 disabled / layui-disabled class</strong>；<br>
-      • 点击城南街道后 <code>STREET_SZ</code> 字段立即填入"城南街道"，<strong>无报错、无提示</strong>；<br>
-      • 具体住所/经营场所自动拼成 <code>江苏省苏州市吴中区城南街道 + 你输入的详细地址</code>；<br>
-      • 法院文书送达地址、房屋性质、房屋权属等 10+ 个后续字段全部通过前端校验。<br><br>
-      <strong>那用户看到的"灰"是什么？</strong>最可能是<strong>下拉列表底部"加载更多"这个 <code>layui-flow-more</code> 链接</strong>——它默认就是半透明灰字，位于第 8 项下方，被误认为是"某个项置灰"。真实现象是：初始看不到"城南街道"（在第 16 位），于是判断"灰/不可选"；其实只需点"加载更多"扩列。<br><br>
-      <strong>已验证可行路径：</strong>
-      <ol style="padding-left:20px;margin-top:6px">
-        <li>地区选 <strong>吴中区</strong>（不用切吴中经开区！<code>userOrg=1402/320500000</code> 默认苏州市级能受理吴中区全部街道）</li>
-        <li>点开街道下拉 → 看到 8 项 → <strong>点"加载更多"</strong> → 看到 16 项 → 选 <strong>城南街道</strong>（最后一项）</li>
-        <li>填详细地址 <code>东吴南路26号X幢X单元X室</code></li>
-        <li>具体住所自动拼好，无需手动编辑</li>
-      </ol>
-    </div>
-  </div>
-  <div class="shotgrid">
-    <figure class="shot">
-      <img src="images/08-final-filled-address.png" alt="地址表单全部字段填妥">
-      <figcaption class="shot-cap">
-        <div class="scn">截图 08</div>
-        <div class="stt">✅ 完整地址表单填妥（实机截图）</div>
-        <div class="sdesc">苏州市 / 吴中区 / <strong>城南街道</strong> / 东吴南路 26 号... / 具体住所自动拼接 / 法院送达地址自动同步 / 电话 / 邮编 215104 / 房屋性质 / 房屋权属 — 所有字段通过前端校验。背景"parsererror"是本轮用 JS hack 走了 <code>?param=yes</code> 导致后端 payload 不合规，正常用户按 UI 点下来不会出现。</div>
-      </figcaption>
-    </figure>
-  </div>
-
-  <div class="alert alert-green" style="margin-top:20px">
-    <span class="ai">✅</span>
-    <p><strong>跑通流程要多久？</strong>实测：登录（支付宝扫码 ≈30s）+ 两个弹窗（10s）+ 我要开办/立即办理（5s）+ 名称选路（5s）+ 填第 1 页（30s）+ 弹地址浮窗（5s）+ 地址下拉（等数据 2-3s + 加载更多 1 次）= 到达"选街道"这一步大约 1.5-2 分钟。若街道灰了，立刻打电话确认登记机关，别盲试。</p>
   </div>
 </section>
 
@@ -576,86 +353,363 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:20px;tex
 
   <div class="alert alert-blue">
     <span class="ai">💻</span>
-    <p><strong>官方入口：</strong>江苏政务服务网 <span style="color:var(--blue-l);font-family:monospace">www.jszwfw.gov.cn</span> → 搜索"个体工商户设立登记" → 或直接进入苏州市场监管局网上服务系统 <span style="color:var(--blue-l);font-family:monospace">scjg.jszwfw.gov.cn/allLinks/business/index/home.jsp</span>（登录后可达）</p>
+    <p><strong>办理入口：</strong>江苏政务服务网 <code>www.jszwfw.gov.cn</code> 登录 → 进入苏州市场监管局企业全链通 <code>scjg.jszwfw.gov.cn/allLinks/business/index/home.jsp</code>。</p>
   </div>
 
-  <div class="alert alert-gold">
-    <span class="ai">👉</span>
-    <p><strong>2026-04-21 实操补丁：</strong>以下时间轴是官方宣传流程。实际每一步的 UI 细节和"坑"参见 <a href="#pitfalls" style="color:var(--gold-l);font-weight:700">!! 实测避坑</a> 章节（带截图）。坑多的地方：登录方式、两个强制弹窗、"我要开办"面板、街道下拉"加载更多"、城南等开发区街道灰掉。</p>
+  <h3>Step 0 · 登录</h3>
+  <div class="step-card">
+    <div class="step-header">
+      <div class="step-num">0</div>
+      <div class="step-header-content">
+        <h3>支付宝扫码登录</h3>
+        <div class="step-meta">最快路径，约 30 秒</div>
+      </div>
+    </div>
+    <div class="step-body">
+      <ul class="checklist">
+        <li>访问 <code>www.jszwfw.gov.cn</code> → 右上角 <strong>登录</strong> → 选 <strong>"其他登录方式 → 支付宝账号"</strong></li>
+        <li>手机支付宝扫码 → 同意授权（授权范围：姓名/手机号/证件号/企业名称）</li>
+        <li>授权后自动跳回首页，标头显示"您好，**X"即登录成功</li>
+      </ul>
+      <div class="alert alert-gold" style="margin-top:10px">
+        <span class="ai">💡</span>
+        <p><strong>提示：</strong>"手机号 + 短信"登录方式仅适用于已经在江苏政务网建过账号的手机号。新用户首次登录用支付宝最方便，会用支付宝实名信息自动建账号。</p>
+      </div>
+    </div>
+  </div>
+  <div class="shotgrid">
+    <figure class="shot">
+      <img src="images/01-alipay-login.png" alt="支付宝扫码登录页">
+      <figcaption class="shot-cap">
+        <div class="scn">截图</div>
+        <div class="stt">支付宝扫码登录页</div>
+        <div class="sdesc">手机支付宝"扫一扫"对准这个二维码即登录。</div>
+      </figcaption>
+    </figure>
   </div>
 
-  <div class="tl">
-    <div class="ti">
-      <div class="td-dot"></div>
-      <div class="ti-day">第1步（约10分钟）</div>
-      <div class="ti-title">登录系统并核名</div>
-      <div class="ti-desc">
-        打开 <span style="color:var(--blue-l);font-family:monospace">www.jszwfw.gov.cn</span>，点击右上角"登录"，选择支付宝/微信/江苏市监APP扫码登录。<br>
-        进入"个体工商户设立登记"表单。<br>
-        如需字号，先在"名称预审"填入候选名称，格式：<strong>苏州市 + 字号 + 行业 + (个体工商户)</strong>。系统约1小时内返回结果。<br>
-        不要字号可跳过此步，直接填写申请表。
+  <h3>Step 1 · 进入企业全链通 + 选择苏州市</h3>
+  <div class="step-card">
+    <div class="step-header">
+      <div class="step-num">1</div>
+      <div class="step-header-content">
+        <h3>关闭两个弹窗，切到苏州市</h3>
+        <div class="step-meta">弹窗 B 强制等 8 秒，必须选地级市才能继续</div>
       </div>
     </div>
-    <div class="ti">
-      <div class="td-dot"></div>
-      <div class="ti-day">第2步（约20分钟）</div>
-      <div class="ti-title">填写登记申请表</div>
-      <div class="ti-desc">
-        按顺序填写以下信息：
-        <div class="form-sim">
-          <div class="form-row"><span class="form-label">经营者姓名</span><span class="form-value">本人姓名（与身份证一致）</span></div>
-          <div class="form-row"><span class="form-label">公民身份号码</span><span class="form-value">身份证号（系统自动核验）</span></div>
-          <div class="form-row"><span class="form-label">住所（住址）</span><span class="form-value">本人常住地址（可与经营场所相同）</span></div>
-          <div class="form-row"><span class="form-label">经营场所</span><span class="form-value">见第4节详细说明 → 填家庭住址即可</span></div>
-          <div class="form-row"><span class="form-label">经营范围</span><span class="form-value"><span class="suggested">见第3节 → 从下拉目录选标准条目</span></span></div>
-          <div class="form-row"><span class="form-label">组成形式</span><span class="form-value"><span class="suggested">个人经营</span><span class="note">（一人独自经营选此项；家庭成员共同经营选"家庭经营"）</span></span></div>
-          <div class="form-row"><span class="form-label">从业人数</span><span class="form-value"><span class="suggested">1</span><span class="note">（目前只有你一人）</span></span></div>
-          <div class="form-row"><span class="form-label">注册资本</span><span class="form-value"><span class="suggested">10000元</span><span class="note">（无法定最低限，填1万-5万均可，仅供参考）</span></span></div>
-          <div class="form-row"><span class="form-label">是否电子商务经营者</span><span class="form-value"><span class="suggested">否</span><span class="note">（做自有网站/App/SaaS，不在淘宝/京东等平台开店的选否）</span></span></div>
-        </div>
+    <div class="step-body">
+      <ul class="checklist">
+        <li>登录后访问 <code>scjg.jszwfw.gov.cn/allLinks/business/index/home.jsp</code></li>
+        <li><strong>弹窗 A：</strong>"2026-05-01 新规"提示——右上角 <strong>×</strong> 关闭。<em>注：建议在 4/29 前完成提交，5/1 起新规生效会要求重填。</em></li>
+        <li><strong>弹窗 B：</strong>选择登记机关所在地级市——<strong>等 8 秒</strong>倒计时后勾"我知道了"，然后地图浮层选 <strong>苏州市</strong>。不选无法继续。</li>
+        <li>切换成功后，顶部导航的"江苏省"会变成"苏州市"</li>
+      </ul>
+    </div>
+  </div>
+  <div class="shotgrid">
+    <figure class="shot">
+      <img src="images/02-select-suzhou.png" alt="选择苏州市">
+      <figcaption class="shot-cap">
+        <div class="scn">截图</div>
+        <div class="stt">地级市选择面板</div>
+        <div class="sdesc">在"江苏省"下方点击"苏州市"。</div>
+      </figcaption>
+    </figure>
+  </div>
+
+  <h3>Step 2 · 选择路径：有字号 vs 无字号</h3>
+  <div class="alert alert-blue">
+    <span class="ai">📋</span>
+    <p><strong>两条路差别：</strong>有字号执照显示<code>苏州市XX工作室（个体工商户）</code>，更专业、品牌感更强；无字号显示<code>张三（个体工商户）</code>，办理更简单、当场拿照。<strong>互联网/AI 产品建议有字号</strong>，方便后续合同/商标。</p>
+  </div>
+  <div class="tw">
+    <table>
+      <thead><tr><th>你的选择</th><th>入口</th><th>额外步骤</th><th>耗时</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><strong>有字号</strong></td>
+          <td>首页底部"<strong>其他业务</strong>"区 → <strong>新设名称申报</strong></td>
+          <td>先做名称申报拿预选号 → 再回开业登记</td>
+          <td class="co">≈ 1 小时（自动核名）+ 开业流程</td>
+        </tr>
+        <tr>
+          <td><strong>无字号</strong></td>
+          <td>首页中部"<strong>我要开办</strong>"卡片 → 立即办理 → "我直接申请无字号个体工商户开业"</td>
+          <td>无</td>
+          <td class="cg">直接进开业表单</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 style="margin-top:24px">路径 A · 有字号：先做"名称自主申报"</h3>
+  <div class="step-card">
+    <div class="step-header">
+      <div class="step-num">A1</div>
+      <div class="step-header-content">
+        <h3>查重候选字号</h3>
+        <div class="step-meta">提交前 1-2 分钟，避免被驳回</div>
       </div>
     </div>
-    <div class="ti">
-      <div class="td-dot"></div>
-      <div class="ti-day">第3步（约5分钟）</div>
-      <div class="ti-title">上传证明材料</div>
-      <div class="ti-desc">
-        上传：① 身份证正面照片 ② 身份证背面照片 ③ 经营场所证明（房产证或租赁合同）<br>
-        图片要求：清晰、四角完整、不反光、大小通常10MB以内（各省系统略有差异）<br>
-        身份证有效期须≥6个月，否则需先换证
+    <div class="step-body">
+      <ul class="checklist">
+        <li>打开 <code>wsdj.samr.gov.cn/saicmccx/</code>（国家市监总局 · 企业名称查询）</li>
+        <li>三个输入框依次填：<strong>名称区划</strong>=苏州市，<strong>字号</strong>=你的候选（2 字以上汉字），<strong>行业</strong>=软件/互联网信息服务/人工智能 等</li>
+        <li>点"查询" → 显示"<em>没有找到与"XX 软件"相关的名称信息</em>"即<strong>可用</strong></li>
+        <li>建议查 3-5 个候选，按偏好排序备用</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="step-card">
+    <div class="step-header">
+      <div class="step-num">A2</div>
+      <div class="step-header-content">
+        <h3>提交名称申报</h3>
+        <div class="step-meta">关键操作：必须切到"个体工商户"</div>
       </div>
     </div>
-    <div class="ti">
-      <div class="td-dot"></div>
-      <div class="ti-day">第4步（约2分钟）</div>
-      <div class="ti-title">人脸识别 + 电子签名</div>
-      <div class="ti-desc">
-        系统提示用<strong>"江苏市监"APP</strong>扫描页面二维码，完成人脸识别（对准摄像头按提示眨眼/转头）。<br>
-        识别通过后在APP上签署电子申请书（手写签名或点击确认）。<br>
-        全程约1-2分钟，无需打印任何纸质材料。
+    <div class="step-body">
+      <ol style="padding-left:20px;color:var(--text2);font-size:13px;line-height:1.8">
+        <li>企业全链通首页 → 滚到底部"<strong>其他业务</strong>"区 → 点 <strong>"新设名称申报"</strong>卡片</li>
+        <li>跳转到 <code>nameDeclarationSl.jsp</code>，顶部"我要开办（新设）的是"默认是"企业（含内资、外资）"——<strong>必须改选"个体工商户"</strong>单选！表单会重新渲染为个体户专版。</li>
+        <li>关闭"系统使用须知"弹窗（按钮可能有几秒倒计时才可点）</li>
+        <li>依次填字段：
+          <ul style="padding-left:16px;margin-top:4px;font-size:12px">
+            <li><strong>具体企业类型</strong>：个体工商户</li>
+            <li><strong>是否为分支机构</strong>：否</li>
+            <li><strong>其住所（经营场所）在</strong>：苏州市</li>
+            <li><strong>注册资本（金）</strong>：人民币 + 1 万元</li>
+            <li><strong>行政区划</strong>：江苏省苏州市 + 你所在区</li>
+            <li><strong>字号</strong>：A1 步查通的候选字号；或勾"使用投资人姓名作为企业字号"</li>
+            <li><strong>行业或者经营特点</strong>：从下拉选标准词，如"软件"、"互联网信息服务"、"人工智能应用"</li>
+            <li><strong>组织形式</strong>：个体工商户</li>
+            <li><strong>登记机关</strong>：你所在区的市场监督管理局（如苏州市吴中区市场监督管理局）</li>
+          </ul>
+        </li>
+        <li>底部"请选择您的企业名称"区会自动拼出全称（例：<code>苏州市睿灵软件工作室（个体工商户）</code>），勾 1 个</li>
+        <li>下一步 → 电子签名（江苏市监 APP 扫码人脸识别）→ 提交</li>
+      </ol>
+    </div>
+  </div>
+  <div class="shotgrid">
+    <figure class="shot">
+      <img src="images/10-gtgsh-name-declaration.png" alt="个体工商户字号申报表单">
+      <figcaption class="shot-cap">
+        <div class="scn">截图</div>
+        <div class="stt">个体工商户名称自主申报表单</div>
+        <div class="sdesc">顶部 radio 切到"个体工商户"后字段会自适应。底部会实时拼出候选企业全称。</div>
+      </figcaption>
+    </figure>
+  </div>
+
+  <div class="step-card">
+    <div class="step-header">
+      <div class="step-num">A3</div>
+      <div class="step-header-content">
+        <h3>等待自动核准 → 拿到预选号</h3>
+        <div class="step-meta">约 1 小时（多数情况立即通过）</div>
       </div>
     </div>
-    <div class="ti">
-      <div class="td-dot"></div>
-      <div class="ti-day">第5步（等待）</div>
-      <div class="ti-title">等待审批 → 领取电子执照</div>
-      <div class="ti-desc">
-        提交后系统自动分配到苏州市市场监督管理局审核。<br>
-        <strong>90%的申请当日审批通过</strong>，法定最长3个工作日。<br>
-        审批通过后：<br>
-        ① <strong>电子营业执照</strong>：立即生成，在"江苏市监"APP→"我的执照"中查看下载，法律效力等同纸质执照<br>
-        ② <strong>纸质执照</strong>：可选择邮寄（填写地址后约3-5天收到），或到辖区市场监管所窗口领取<br>
-        执照上显示：统一社会信用代码（18位）即是你的税务ID，无需另行申领
+    <div class="step-body">
+      <ul class="checklist">
+        <li>提交后系统自动比对国家库，<strong>90% 在 1 小时内核准</strong></li>
+        <li>核准结果会以短信通知，登录"我的业务"也能查</li>
+        <li>预选号格式：<code>****Z*****</code>（中间有大写 Z），<strong>60 个自然日</strong>有效，过期作废</li>
+        <li>同时下载《市场主体自主申报名称信用承诺书》和《名称保留告知书》两份 PDF（开业登记时用得到）</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3 style="margin-top:24px">Step 3 · 进入开业登记表单</h3>
+  <div class="step-card">
+    <div class="step-header">
+      <div class="step-num">3</div>
+      <div class="step-header-content">
+        <h3>从首页"我要开办"进入</h3>
+        <div class="step-meta">有字号、无字号都从这里进开业表单</div>
       </div>
+    </div>
+    <div class="step-body">
+      <ol style="padding-left:20px;color:var(--text2);font-size:13px;line-height:1.8">
+        <li>首页中部点 <strong>"我要开办"</strong> 卡片——下方会展开"全链通"勾选面板（公章刻制/银行预约/发票/社保/公积金 默认全勾）</li>
+        <li>不需要的服务可以取消勾选，至少保留"市场主体登记（营业执照）"（必选且置灰）</li>
+        <li>右上角点 <strong>"立即办理"</strong> 按钮 → 进入名称选路页</li>
+        <li>名称选路页：
+          <ul style="padding-left:16px;margin-top:4px;font-size:12px">
+            <li><strong>有字号（路径 A 已拿到预选号）</strong>：上半分区"我有名称信息" → 填<strong>预选号 + 企业全称</strong> → 下一步</li>
+            <li><strong>无字号</strong>：下半分区 → 第三个卡片"<strong>我直接申请无字号个体工商户开业</strong>" → 办理</li>
+          </ul>
+        </li>
+      </ol>
+    </div>
+  </div>
+  <div class="shotgrid">
+    <figure class="shot">
+      <img src="images/03-kaiban-panel.png" alt="我要开办展开面板">
+      <figcaption class="shot-cap">
+        <div class="scn">截图</div>
+        <div class="stt">"我要开办"展开的全链通面板</div>
+        <div class="sdesc">点击卡片不直接跳转——会展开此面板，需点右上角"立即办理"按钮才进下一页。</div>
+      </figcaption>
+    </figure>
+    <figure class="shot">
+      <img src="images/04-wuzihao-route.png" alt="名称选路页">
+      <figcaption class="shot-cap">
+        <div class="scn">截图</div>
+        <div class="stt">名称选路页</div>
+        <div class="sdesc">上半填预选号（有字号），下半选"我直接申请无字号个体工商户开业"（无字号）。</div>
+      </figcaption>
+    </figure>
+  </div>
+
+  <h3>Step 4 · 开业表单 第 1 页（基本信息）</h3>
+  <div class="step-card">
+    <div class="step-header">
+      <div class="step-num">4</div>
+      <div class="step-header-content">
+        <h3>填基本信息</h3>
+        <div class="step-meta">约 1 分钟</div>
+      </div>
+    </div>
+    <div class="step-body">
+      <div class="form-sim">
+        <div class="form-row"><span class="form-label">名称来源</span><span class="form-value">有字号路径已自动锁到"名称预先登记"；无字号锁到"暂未申请名称"</span></div>
+        <div class="form-row"><span class="form-label">请确认开业名称</span><span class="form-value">有字号自动带出企业全称；无字号显示 ****</span></div>
+        <div class="form-row"><span class="form-label">出资额（万元）</span><span class="form-value"><span class="suggested">1</span><span class="note">（个体工商户无法定最低，填 1-5 万均可）</span></span></div>
+        <div class="form-row"><span class="form-label">个体工商户类别</span><span class="form-value"><span class="suggested">个体工商户</span></span></div>
+        <div class="form-row"><span class="form-label">组成形式</span><span class="form-value"><span class="suggested">个人经营</span><span class="note">（一人独自；家庭成员共同选"家庭经营"）</span></span></div>
+        <div class="form-row"><span class="form-label">是否为网店</span><span class="form-value"><span class="suggested">实体店</span><span class="note">（有自有网站/App/SaaS 但不在淘宝/京东开店的也选实体店）</span></span></div>
+      </div>
+    </div>
+  </div>
+  <div class="shotgrid">
+    <figure class="shot">
+      <img src="images/05-form-page1.png" alt="开业表单第1页">
+      <figcaption class="shot-cap">
+        <div class="scn">截图</div>
+        <div class="stt">开业表单 · 第 1 页</div>
+        <div class="sdesc">填完点"下一步"进入第 2 页。</div>
+      </figcaption>
+    </figure>
+  </div>
+
+  <h3>Step 5 · 开业表单 第 2 页（经营场所 + 经营范围）</h3>
+  <div class="step-card">
+    <div class="step-header">
+      <div class="step-num">5a</div>
+      <div class="step-header-content">
+        <h3>添加住所信息（弹窗）</h3>
+        <div class="step-meta">关键操作：必须先点"+ 添加住所信息"</div>
+      </div>
+    </div>
+    <div class="step-body">
+      <ul class="checklist">
+        <li>第 2 页上方"经营场所信息"区有一个虚线灰框"<strong>+ 添加住所信息</strong>"——必须点它弹出地址浮窗</li>
+        <li>浮窗里依次填：
+          <ul style="padding-left:16px;margin-top:4px;font-size:12px">
+            <li><strong>地址第一级</strong>：苏州市（默认锁定）</li>
+            <li><strong>地址第二级</strong>：选你所在区（如吴中区）</li>
+            <li><strong>街道下拉</strong>：点开 → 默认只显示前 8 项 → <strong>下拉到底点"加载更多"</strong>展开完整 16 项 → 选你的街道（如<strong>城南街道</strong>在第 16 位）</li>
+            <li><strong>详细地址</strong>：精确到门牌号/室号，如 <code>东吴南路26号X幢X单元X室</code></li>
+            <li><strong>是否取得房屋产权证</strong>：是/否</li>
+            <li><strong>是否采用住所（经营场所）承诺申报</strong>：是（推荐，简化材料）</li>
+            <li><strong>具体住所/经营场所</strong>：自动拼接 <code>江苏省苏州市XX区XX街道 + 你的详细地址</code>，无需手动改</li>
+            <li><strong>是否属于公告拆迁征收范围内</strong>：否</li>
+            <li><strong>是否实行住所与实际经营场所分离</strong>：否</li>
+            <li><strong>法院法律文书送达地址确认</strong>：住所</li>
+            <li><strong>电话或传真 / 联系电话</strong>：本人手机号</li>
+            <li><strong>邮政编码</strong>：苏州吴中区参考 <code>215104</code>，按你所在街道实际邮编填</li>
+            <li><strong>房屋性质</strong>：城镇非独立住宅（小区房）/ 城镇独立住宅 / 农村住宅 / 商业及其他非住宅 / 农村自建房</li>
+            <li><strong>房屋权属</strong>：自有产权 / 租赁使用权 / 无偿使用权 / 其他</li>
+          </ul>
+        </li>
+        <li>填完点 <strong>保存</strong> 关闭浮窗，地址会以卡片形式显示在"经营场所信息"区</li>
+      </ul>
+      <div class="alert alert-gold" style="margin-top:10px">
+        <span class="ai">⚠️</span>
+        <p><strong>街道下拉常见误区：</strong>下拉打开时只显示 8 项，列表底部有<strong>灰色小字"加载更多"</strong>链接。不点它后面 8 个街道（含城南街道）永远看不见——很多人误以为自己街道"灰掉不可选"，其实是没加载出来。输入"城南"也不会触发过滤，必须点加载更多。</p>
+      </div>
+    </div>
+  </div>
+  <div class="shotgrid">
+    <figure class="shot">
+      <img src="images/06-form-page2.png" alt="开业表单第2页">
+      <figcaption class="shot-cap">
+        <div class="scn">截图</div>
+        <div class="stt">第 2 页主界面</div>
+        <div class="sdesc">"+ 添加住所信息"虚线框是入口；"经营范围信息"在下方独立填写。</div>
+      </figcaption>
+    </figure>
+    <figure class="shot">
+      <img src="images/07-street-dropdown-incomplete.png" alt="街道下拉默认状态">
+      <figcaption class="shot-cap">
+        <div class="scn">截图</div>
+        <div class="stt">街道下拉默认只显示 8 项</div>
+        <div class="sdesc">列表底部有"加载更多"灰色小字链接，点它才会展开后面 8 项。</div>
+      </figcaption>
+    </figure>
+    <figure class="shot">
+      <img src="images/08-final-filled-address.png" alt="完整地址表单填妥">
+      <figcaption class="shot-cap">
+        <div class="scn">截图</div>
+        <div class="stt">所有地址字段填妥效果</div>
+        <div class="sdesc">具体住所、法院送达地址会自动拼接好，无需手动编辑。</div>
+      </figcaption>
+    </figure>
+  </div>
+
+  <div class="step-card">
+    <div class="step-header">
+      <div class="step-num">5b</div>
+      <div class="step-header-content">
+        <h3>填经营范围信息</h3>
+        <div class="step-meta">和地址独立填写</div>
+      </div>
+    </div>
+    <div class="step-body">
+      <ul class="checklist">
+        <li><strong>登记机关</strong>：默认根据街道自动选好（如"苏州市吴中区市场监督管理局"）</li>
+        <li><strong>所属行业</strong>：从下拉选（软件/互联网信息服务/人工智能 等）</li>
+        <li><strong>申领营业执照副本数量</strong>：1（个人通常 1 份够用）</li>
+        <li><strong>营业执照领取方式</strong>：邮寄（推荐，省事）/ 到窗口领取</li>
+        <li><strong>经营范围</strong>：点"<strong>选择经营范围</strong>"按钮 → 从国家标准目录勾选条目（详见第 3 节"经营范围"）</li>
+        <li><strong>是否有化工生产</strong>：否</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3>Step 6 · 提交 + 电子签名 + 领照</h3>
+  <div class="step-card">
+    <div class="step-header">
+      <div class="step-num">6</div>
+      <div class="step-header-content">
+        <h3>电子签名 + 等待审批</h3>
+        <div class="step-meta">约 5 分钟人脸识别 + 当日出结果</div>
+      </div>
+    </div>
+    <div class="step-body">
+      <ol style="padding-left:20px;color:var(--text2);font-size:13px;line-height:1.8">
+        <li>填完所有字段 → 上传身份证正反面 + 经营场所证明（房产证或租赁合同）</li>
+        <li>系统弹二维码 → 用 <strong>"江苏市监"APP</strong> 扫码 → 人脸识别（眨眼/转头）→ 在 APP 里手写签名 → 提交</li>
+        <li>提交后系统自动分配苏州市市场监督管理局审核，<strong>90% 当日通过</strong>，法定最长 3 个工作日</li>
+        <li>审批通过后：
+          <ul style="padding-left:16px;margin-top:4px;font-size:12px">
+            <li><strong>电子营业执照</strong>：立即生成，在"江苏市监"APP → "我的执照"中下载，法律效力等同纸质</li>
+            <li><strong>纸质执照</strong>：选邮寄约 3-5 天到，或到辖区市场监管所窗口领取</li>
+            <li>执照上的<strong>统一社会信用代码（18 位）</strong>就是你的税务 ID，无需另申领</li>
+          </ul>
+        </li>
+      </ol>
     </div>
   </div>
 
   <div class="alert alert-gold">
     <span class="ai">📱</span>
-    <p><strong>获取电子执照：</strong>微信搜索小程序"电子营业执照"或"苏服办"，用实名账号登录后可随时调取执照，全国通用，无需携带纸质版。</p>
+    <p><strong>随时调取电子执照：</strong>微信搜索小程序"<strong>电子营业执照</strong>"或"<strong>苏服办</strong>"，用实名账号登录后可随时调取，全国通用。</p>
   </div>
 
-  <h3>官方入口汇总</h3>
+  <h3 style="margin-top:24px">官方入口汇总</h3>
   <div class="link-grid">
     <div class="link-card">
       <div class="link-title">江苏政务服务网（首选入口）</div>
@@ -762,14 +816,6 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:20px;tex
   <div class="alert alert-green">
     <span class="ai">🏠</span>
     <p><strong>2025年7月新规明确：</strong>软件开发、互联网服务、信息技术咨询等<strong>不干扰邻居、不接待大量客户</strong>的业务，可以用住宅地址作为经营场所，苏州支持此政策。</p>
-  </div>
-
-  <div class="pitfall" style="background:linear-gradient(90deg,var(--green-dim),var(--blue-dim));border-color:var(--green-b);border-left-color:var(--green-l)">
-    <div class="pt-label" style="color:var(--green-l)">2026-04-21 更正 · 已端到端验证</div>
-    <div class="pt-title">城南街道直接可选，不需要切到吴中经开区</div>
-    <div class="pt-body">
-      之前"城南/长桥/越溪/郭巷/太湖街道在下拉里灰掉，要切吴中经开区"的推断已被 Playwright 实机打脸——吴中区下的 16 个街道/镇 DOM 完全一致，都可点选。用户遇到的"灰"其实是<strong>下拉列表底部"加载更多"链接</strong>的灰字被误判。详见 <a href="#pitfalls" style="color:var(--blue-l)">!! 实测避坑</a> 第 ⑧ 坑。
-    </div>
   </div>
 
   <h3>使用住宅地址的操作步骤</h3>
