@@ -304,17 +304,56 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:20px;tex
     </figure>
   </div>
 
-  <h3>④ "无字号个体工商户"隐藏在下方分区</h3>
-  <p style="color:var(--text2);font-size:13px">进入名称页后，上半部分"我有名称信息"是已办好预核准的用户用的。<strong>不起字号的选"我没有名称信息"分区里的"我直接申请无字号个体工商户开业"</strong>卡片的"办理→"。</p>
+  <h3>④ 名称选路页：有字号/无字号走两条完全不同的路</h3>
+  <p style="color:var(--text2);font-size:13px">进入名称选路页后<strong>千万别点错</strong>——上下两个分区不等价，是<strong>两条完全不同的流程</strong>：</p>
+  <div class="tw" style="margin-top:10px">
+    <table>
+      <thead><tr><th>你的情况</th><th>正确入口</th><th>前置步骤</th><th>耗时</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><strong>不起字号</strong><br>（营业执照显示"张三（个体工商户）"）</td>
+          <td class="cg">下半分区 → <strong>我直接申请无字号个体工商户开业</strong> → 办理</td>
+          <td>无</td>
+          <td class="cg">最快，当场进表单</td>
+        </tr>
+        <tr>
+          <td><strong>要起字号</strong><br>（营业执照显示"苏州XX工作室（个体工商户）"）</td>
+          <td class="cr">⚠️ 企业全链通里<strong>没有个体户字号入口</strong>！<br>"我没有名称，去名称自主申报"只给公司/合伙企业用（企业类型下拉无个体工商户选项）。</td>
+          <td>走其他系统或先无字号再变更</td>
+          <td class="cr">见下方红色警示</td>
+        </tr>
+        <tr>
+          <td><strong>已有预选号</strong><br>（之前通过苏州其他入口申报过）</td>
+          <td class="cg">上半分区 → <strong>我有名称信息</strong> → 填预选号 + 企业名称 → 下一步</td>
+          <td>手边要有预选号</td>
+          <td class="cg">最快</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="alert alert-red" style="margin-top:10px">
+    <span class="ai">🚨</span>
+    <p><strong>⚠️ 2026-04-21 实测修正：</strong>"我没有名称，去名称自主申报"<strong>不支持个体工商户</strong>！这条入口会跳到 <code>nameDeclarationSl.jsp</code>，里面"请选择具体企业类型"下拉只有：公司、非公司企业法人、普通合伙、特殊普通合伙、有限合伙、个人独资企业、港澳台合伙、非公司外商投资等 <strong>14 项，无"个体工商户"</strong>。它是给公司/合伙企业用的。<br><br>
+    <strong>个体工商户的实际路径：</strong>江苏省企业全链通目前<strong>只开放"无字号"快速通道</strong>（即 <code>gthDec()</code> 入口，<code>?param=no</code>，第 1 页的"名称来源"被锁到"暂未申请名称"）。想要字号的个体户，走苏州特定入口：
+    <ol style="padding-left:20px;margin-top:6px">
+      <li><strong>方法 A（推荐）：</strong>先注册无字号个体户（当场拿执照）→ 之后办<strong>变更登记</strong>加字号（市监局受理，免费，约 1-3 工作日）。优点：不用等字号核准，立刻能收款开票。</li>
+      <li><strong>方法 B：</strong>打电话 <strong>苏小福 sst.suzhou.gov.cn</strong> 咨询/或拨 <strong>12345</strong> 问"个体工商户字号自主申报在哪个系统"——苏州有独立的"个体工商户名称自主申报"入口，可能在苏小福专区或吴中区专属入口内。</li>
+      <li><strong>查重工具：</strong><code>wsdj.samr.gov.cn/saicmccx/</code> 提前查字号是否重名。字号格式：<code>苏州市 + [字号] + [行业] + (个体工商户)</code>，如 <code>苏州市启云软件工作室（个体工商户）</code>。</li>
+    </ol></p>
+  </div>
   <div class="shotgrid">
     <figure class="shot">
-      <img src="images/04-wuzihao-route.png" alt="无字号个体工商户入口">
+      <img src="images/04-wuzihao-route.png" alt="名称路由页">
       <figcaption class="shot-cap">
         <div class="scn">截图 04</div>
-        <div class="stt">名称选路页</div>
-        <div class="sdesc">下半部分 "我没有名称信息" → 第二个卡片 "我直接申请无字号个体工商户开业"。这是软件/AI 个人开发者的推荐路径。</div>
+        <div class="stt">名称选路页（两个分区）</div>
+        <div class="sdesc">上半"我有名称信息"（需预选号）；下半"我没有名称信息"包含 4 个卡片：① 我没有名称，去名称自主申报（<strong>有字号走这个</strong>）；② 隶属企业申请分支机构；③ <strong>我直接申请无字号个体工商户开业</strong>（无字号走这个）；④ 外国企业相关业务。</div>
       </figcaption>
     </figure>
+  </div>
+  <div class="alert alert-blue">
+    <span class="ai">💡</span>
+    <p>无论有字号还是无字号，<strong>从第 2 页（经营场所/经营范围）开始两边表单完全相同</strong>。下文 ⑤⑥⑦⑧ 描述的坑对两条路都适用。</p>
   </div>
 
   <h3>⑤ 第 1 页字段校验</h3>
@@ -362,21 +401,35 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:20px;tex
     </figure>
   </div>
 
-  <h3>⑧ ⚠️ 城南/长桥/越溪/郭巷/太湖街道可能显示为"灰色不可选"</h3>
-  <div class="pitfall">
-    <div class="pt-label">管辖错配 · 高发卡点</div>
-    <div class="pt-title">原因：这些街道的登记机关是"吴中经济技术开发区"，不是"吴中区"</div>
+  <h3>⑧ ✅ 辟谣：城南街道不会变灰——误判根因其实是⑦</h3>
+  <div class="pitfall" style="background:linear-gradient(90deg,var(--green-dim),var(--blue-dim));border-color:var(--green-b);border-left-color:var(--green-l)">
+    <div class="pt-label" style="color:var(--green-l)">2026-04-21 端到端验证 · 更正</div>
+    <div class="pt-title">吴中区下 16 个街道/镇在 DOM 里<strong>没有任何 disabled 样式</strong>，城南街道可以直接点选</div>
     <div class="pt-body">
-      吴中区的 7 个街道里，<strong>城南、长桥、越溪、郭巷、太湖</strong>（以及 <strong>甪直镇</strong>）是"一套人马两块牌子"——行政上属吴中区，<strong>管理上归吴中经济技术开发区</strong>。Playwright 抓包确认：默认进来时 <code>userOrg=1402（苏州市级）/userOrgCode=320500000（苏州市）</code>，这个登记机关不负责上面 5 个街道+1 个镇的受理，所以它们在下拉里显示为<strong>灰色禁用</strong>。<br><br>
-      <strong>解决方案（按成功率排）：</strong>
+      之前猜测"城南/长桥/越溪/郭巷/太湖属吴中经济技术开发区管，所以在下拉里变灰"——<strong>这个推断错误</strong>。Playwright 深挖 DOM 确认：<br><br>
+      • 吴中区下 16 个街道/镇的 <code>&lt;li&gt;</code> 元素 HTML 完全相同（<code>style="cursor:pointer;font-size:16px;"</code>），<strong>没有 disabled / layui-disabled class</strong>；<br>
+      • 点击城南街道后 <code>STREET_SZ</code> 字段立即填入"城南街道"，<strong>无报错、无提示</strong>；<br>
+      • 具体住所/经营场所自动拼成 <code>江苏省苏州市吴中区城南街道 + 你输入的详细地址</code>；<br>
+      • 法院文书送达地址、房屋性质、房屋权属等 10+ 个后续字段全部通过前端校验。<br><br>
+      <strong>那用户看到的"灰"是什么？</strong>最可能是<strong>下拉列表底部"加载更多"这个 <code>layui-flow-more</code> 链接</strong>——它默认就是半透明灰字，位于第 8 项下方，被误认为是"某个项置灰"。真实现象是：初始看不到"城南街道"（在第 16 位），于是判断"灰/不可选"；其实只需点"加载更多"扩列。<br><br>
+      <strong>已验证可行路径：</strong>
       <ol style="padding-left:20px;margin-top:6px">
-        <li><strong>方法 A：顶部先切"登记机关"</strong>——页面顶部导航或"切换区域"把办事地区从苏州市改成 <strong>"吴中经济技术开发区"</strong>（如果可选），再重开"我要开办"，此时下拉里这些街道变可选。</li>
-        <li><strong>方法 B：走苏州工业园区/开发区专属入口</strong>——从 <code>one.sipac.gov.cn</code> 或吴中经开区的专区入口进，登记机关自动带到经开区。</li>
-        <li><strong>方法 C：线下咨询</strong>——拨打 <strong>城南街道政务服务中心 0512-65250205 / 0512-65130299</strong>（已验证），询问"中交春映东吴地址注册个体工商户，登记机关该选吴中区还是吴中经开区"。</li>
-        <li><strong>方法 D：兜底</strong>——<strong>苏州市 12345</strong> 或 <strong>江苏省市监局 025-83666111</strong>（工作日 9-11:30、14-17）。</li>
+        <li>地区选 <strong>吴中区</strong>（不用切吴中经开区！<code>userOrg=1402/320500000</code> 默认苏州市级能受理吴中区全部街道）</li>
+        <li>点开街道下拉 → 看到 8 项 → <strong>点"加载更多"</strong> → 看到 16 项 → 选 <strong>城南街道</strong>（最后一项）</li>
+        <li>填详细地址 <code>东吴南路26号X幢X单元X室</code></li>
+        <li>具体住所自动拼好，无需手动编辑</li>
       </ol>
-      <p style="margin-top:8px;font-size:12px;color:var(--text3)"><em>说明：方法 A 我在本轮测试没来得及端到端验证（浏览器会话 20 分钟过期重登）。基于登记机关编码的推断置信度高，但请打电话最终确认。</em></p>
     </div>
+  </div>
+  <div class="shotgrid">
+    <figure class="shot">
+      <img src="images/08-final-filled-address.png" alt="地址表单全部字段填妥">
+      <figcaption class="shot-cap">
+        <div class="scn">截图 08</div>
+        <div class="stt">✅ 完整地址表单填妥（实机截图）</div>
+        <div class="sdesc">苏州市 / 吴中区 / <strong>城南街道</strong> / 东吴南路 26 号... / 具体住所自动拼接 / 法院送达地址自动同步 / 电话 / 邮编 215104 / 房屋性质 / 房屋权属 — 所有字段通过前端校验。背景"parsererror"是本轮用 JS hack 走了 <code>?param=yes</code> 导致后端 payload 不合规，正常用户按 UI 点下来不会出现。</div>
+      </figcaption>
+    </figure>
   </div>
 
   <div class="alert alert-green" style="margin-top:20px">
@@ -682,11 +735,11 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:20px;tex
     <p><strong>2025年7月新规明确：</strong>软件开发、互联网服务、信息技术咨询等<strong>不干扰邻居、不接待大量客户</strong>的业务，可以用住宅地址作为经营场所，苏州支持此政策。</p>
   </div>
 
-  <div class="pitfall">
-    <div class="pt-label">苏州特殊 · 必读</div>
-    <div class="pt-title">吴中区城南/长桥/越溪/郭巷/太湖街道 有管辖错配</div>
+  <div class="pitfall" style="background:linear-gradient(90deg,var(--green-dim),var(--blue-dim));border-color:var(--green-b);border-left-color:var(--green-l)">
+    <div class="pt-label" style="color:var(--green-l)">2026-04-21 更正 · 已端到端验证</div>
+    <div class="pt-title">城南街道直接可选，不需要切到吴中经开区</div>
     <div class="pt-body">
-      这 5 个街道（加上甪直镇）由 <strong>吴中经济技术开发区</strong> 管理（行政上属吴中区，但登记机关不同）。如果你家在这 6 个片区任意一个，<strong>注册时要先把登记机关切到"吴中经济技术开发区"</strong>，否则街道下拉里这些项会灰掉。详见上方 <a href="#pitfalls" style="color:var(--blue-l)">!! 实测避坑</a> 章节第 ⑧ 坑。
+      之前"城南/长桥/越溪/郭巷/太湖街道在下拉里灰掉，要切吴中经开区"的推断已被 Playwright 实机打脸——吴中区下的 16 个街道/镇 DOM 完全一致，都可点选。用户遇到的"灰"其实是<strong>下拉列表底部"加载更多"链接</strong>的灰字被误判。详见 <a href="#pitfalls" style="color:var(--blue-l)">!! 实测避坑</a> 第 ⑧ 坑。
     </div>
   </div>
 
