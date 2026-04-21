@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>中国计算机软件著作权登记实操手册 · 2026最新版</title>
+<style>
+:root{
+  --green:#27ae60;--green-l:#2ecc71;--green-dim:#0d1f14;--green-b:#1a4d2a;
+  --blue:#2980b9;--blue-l:#3498db;--blue-dim:#0d1828;--blue-b:#1a3a5c;
+  --gold:#f39c12;--gold-l:#f1c40f;--gold-dim:#1f1500;--gold-b:#5c3a00;
+  --red:#c0392b;--red-l:#e74c3c;--red-dim:#2c1010;--red-b:#5c1818;
+  --gray:#95a5a6;--gray-l:#bdc3c7;
+  --bg:#0f1117;--bg2:#161b22;--bg3:#1e2530;--bg4:#252d3a;
+  --text:#e8eaf0;--text2:#a8b2c0;--text3:#6b7894;
+  --border:#2a3347;--border2:#3a4560;
+  --r:8px;--rl:12px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'PingFang SC','Microsoft YaHei',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.7;font-size:15px}
+
+.header{background:linear-gradient(135deg,#050a14 0%,#0f1117 50%,#140a05 100%);border-bottom:1px solid var(--border);padding:32px 0 24px;text-align:center}
+.badge{display:inline-flex;gap:8px;align-items:center;margin-bottom:12px}
+.badge span{display:inline-block;background:var(--blue-dim);border:1px solid var(--blue);color:var(--blue-l);padding:3px 12px;border-radius:16px;font-size:11px;font-weight:700;letter-spacing:1px}
+.badge span.b2{background:var(--gold-dim);border-color:var(--gold);color:var(--gold-l)}
+.header h1{font-size:24px;font-weight:700;margin-bottom:6px}
+.header p{color:var(--text2);font-size:14px}
+.meta{margin-top:16px;display:flex;justify-content:center;gap:24px;flex-wrap:wrap}
+.meta span{color:var(--text3);font-size:12px}
+.meta strong{color:var(--blue-l)}
+
+.container{max-width:900px;margin:0 auto;padding:0 20px}
+
+.progress-nav{background:var(--bg2);border-bottom:2px solid var(--blue-b);padding:0;overflow-x:auto}
+.progress-nav ul{display:flex;list-style:none;min-width:max-content}
+.progress-nav li a{display:flex;align-items:center;gap:6px;padding:12px 16px;color:var(--text3);text-decoration:none;font-size:12px;font-weight:600;white-space:nowrap;border-bottom:2px solid transparent;margin-bottom:-2px;transition:all .2s}
+.progress-nav li a:hover,.progress-nav li a.active{color:var(--text);border-bottom-color:var(--blue-l)}
+.progress-nav li a .pn{width:20px;height:20px;border-radius:50%;background:var(--bg3);border:1px solid var(--border2);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;flex-shrink:0}
+.progress-nav li a:hover .pn,.progress-nav li a.active .pn{background:var(--blue-dim);border-color:var(--blue);color:var(--blue-l)}
+
+section{padding:36px 0;border-bottom:1px solid var(--border)}
+section:last-child{border-bottom:none}
+.slabel{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--blue-l);margin-bottom:6px}
+h2{font-size:20px;font-weight:700;margin-bottom:18px}
+h3{font-size:14px;font-weight:700;color:var(--text);margin-bottom:10px;margin-top:14px}
+p{color:var(--text2);margin-bottom:8px;font-size:14px}
+
+/* Alerts */
+.alert{border-radius:var(--r);padding:12px 16px;margin-bottom:14px;display:flex;gap:10px;align-items:flex-start}
+.ai{font-size:16px;flex-shrink:0;margin-top:1px}
+.alert-green{background:var(--green-dim);border:1px solid var(--green-b)}
+.alert-blue{background:var(--blue-dim);border:1px solid var(--blue-b)}
+.alert-gold{background:var(--gold-dim);border:1px solid var(--gold-b)}
+.alert-red{background:var(--red-dim);border:1px solid var(--red-b)}
+.alert p{margin:0;font-size:13px;color:var(--text2)}
+.alert strong{color:var(--text)}
+
+.krow{display:flex;gap:14px;margin-bottom:20px;flex-wrap:wrap}
+.kstat{background:var(--bg2);border:1px solid var(--border);border-radius:var(--rl);padding:16px;flex:1;min-width:130px;text-align:center}
+.kstat .kn{font-size:26px;font-weight:700;color:var(--blue-l);line-height:1}
+.kstat .ku{font-size:12px;color:var(--blue-l)}
+.kstat .kl{font-size:12px;color:var(--text2);margin-top:4px}
+.kstat .ks{font-size:11px;color:var(--text3);margin-top:2px}
+
+.step-card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--rl);overflow:hidden;margin-bottom:16px}
+.step-header{display:flex;gap:14px;align-items:flex-start;padding:16px 18px;border-bottom:1px solid var(--border)}
+.step-num{width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;flex-shrink:0;background:var(--blue-dim);border:2px solid var(--blue);color:var(--blue-l)}
+.step-header-content{flex:1}
+.step-header-content h3{margin-bottom:2px;margin-top:0}
+.step-header-content .step-meta{font-size:12px;color:var(--text3)}
+.step-body{padding:16px 18px}
+
+.checklist{list-style:none}
+.checklist li{display:flex;gap:10px;padding:7px 0;border-bottom:1px solid var(--border);font-size:13px;color:var(--text2)}
+.checklist li:last-child{border-bottom:none}
+.checklist li::before{content:'□';color:var(--text3);flex-shrink:0;font-size:14px}
+.checklist li strong{color:var(--text)}
+
+.form-sim{background:var(--bg3);border-radius:var(--r);padding:14px 16px;margin:12px 0}
+.form-row{display:flex;gap:10px;margin-bottom:8px;align-items:flex-start;font-size:13px}
+.form-row:last-child{margin-bottom:0}
+.form-label{color:var(--text3);min-width:120px;flex-shrink:0;padding-top:2px}
+.form-value{color:var(--text);font-weight:500;flex:1}
+.form-value .suggested{color:var(--blue-l);background:var(--blue-dim);padding:2px 8px;border-radius:4px;font-family:monospace;font-size:12px;display:inline-block}
+.form-value .note{font-size:11px;color:var(--text3);margin-top:2px;display:block}
+
+.tw{overflow-x:auto;margin:12px 0}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th{background:var(--bg3);color:var(--text);font-weight:600;padding:9px 12px;text-align:left;border-bottom:2px solid var(--border2);white-space:nowrap}
+td{padding:8px 12px;border-bottom:1px solid var(--border);color:var(--text2);vertical-align:top}
+tr:hover td{background:var(--bg3)}
+.cg{color:var(--green-l);font-weight:600}
+.co{color:var(--gold);font-weight:600}
+.cr{color:var(--red-l);font-weight:600}
+.cgr{color:var(--text3)}
+
+.link-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:10px;margin:12px 0}
+.link-card{background:var(--bg3);border:1px solid var(--border);border-radius:var(--r);padding:12px 14px}
+.link-card .link-title{font-size:13px;font-weight:700;color:var(--text);margin-bottom:3px}
+.link-card .link-url{font-size:11px;color:var(--blue-l);font-family:monospace;word-break:break-all}
+.link-card .link-desc{font-size:12px;color:var(--text3);margin-top:4px}
+
+.scope-box{background:var(--bg3);border:1px solid var(--border2);border-radius:var(--r);padding:14px 16px;margin:12px 0;font-family:monospace;font-size:13px;color:var(--blue-l);line-height:2}
+.scope-note{font-family:inherit;font-size:11px;color:var(--text3);margin-top:8px}
+
+.tl{position:relative;padding-left:24px}
+.tl::before{content:'';position:absolute;left:6px;top:8px;bottom:0;width:2px;background:var(--border2)}
+.ti{position:relative;margin-bottom:20px}
+.td-dot{position:absolute;left:-22px;top:4px;width:10px;height:10px;border-radius:50%;border:2px solid var(--blue);background:var(--blue-dim)}
+.ti-day{font-size:11px;font-weight:700;color:var(--blue-l);margin-bottom:3px}
+.ti-title{font-size:14px;font-weight:600;color:var(--text);margin-bottom:3px}
+.ti-desc{font-size:13px;color:var(--text2)}
+
+.qa{margin-bottom:12px}
+.qa-q{font-size:13px;font-weight:700;color:var(--gold);margin-bottom:4px}
+.qa-a{font-size:13px;color:var(--text2);padding-left:12px;border-left:2px solid var(--gold-b)}
+
+details{background:var(--bg3);border:1px solid var(--border);border-radius:var(--r);margin-bottom:8px}
+summary{padding:10px 14px;cursor:pointer;font-size:13px;font-weight:600;color:var(--text);list-style:none;display:flex;justify-content:space-between;align-items:center}
+summary::after{content:'＋';color:var(--text3);font-size:14px}
+details[open] summary::after{content:'－'}
+.det-body{padding:0 14px 14px}
+
+code{background:var(--bg3);padding:1px 6px;border-radius:3px;font-family:'JetBrains Mono','Consolas',monospace;font-size:12px;color:var(--gold-l)}
+
+footer{background:var(--bg2);border-top:1px solid var(--border);padding:20px;text-align:center;color:var(--text3);font-size:12px}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="container">
+    <div class="badge">
+      <span>全国通办 · 北京受理</span>
+      <span class="b2">2026 最新版</span>
+    </div>
+    <h1>计算机软件著作权登记实操手册</h1>
+    <p>互联网 · 软件 · AI 产品开发者 · 材料清单 + 流程 + 费用 + 避坑</p>
+    <div class="meta">
+      <span>适用法规 <strong>《计算机软件著作权登记办法》(国家版权局第 1 号令)</strong></span>
+      <span>整理日期 <strong>2026-04-21</strong></span>
+      <span>官方费用 <strong>¥0</strong></span>
+      <span>预计用时 <strong>2-3 个月</strong></span>
+    </div>
+  </div>
+</div>
+
+<nav class="progress-nav">
+  <div class="container">
+    <ul>
+      <li><a href="#overview"><span class="pn">0</span>概览</a></li>
+      <li><a href="#materials"><span class="pn">1</span>材料清单</a></li>
+      <li><a href="#process"><span class="pn">2</span>申请流程</a></li>
+      <li><a href="#fee"><span class="pn">3</span>费用与时限</a></li>
+      <li><a href="#identity"><span class="pn">4</span>主体选择</a></li>
+      <li><a href="#rejection"><span class="pn">5</span>常见驳回</a></li>
+      <li><a href="#suzhou"><span class="pn">6</span>苏州本地</a></li>
+      <li><a href="#faq"><span class="pn">?</span>常见问题</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="container">
+
+<!-- 0 概览 -->
+<section id="overview">
+  <div class="slabel">00 · 快速概览</div>
+  <h2>软著登记要花多少钱？要多久？</h2>
+
+  <div class="alert alert-green">
+    <span class="ai">✅</span>
+    <p><strong>官方登记费自 2017 年 4 月 1 日起停征，至今 ¥0。</strong>依据财政部、发改委《财税〔2017〕20 号》。流程全线上，发电子证书，普通件约 2-3 个月。网上流传"2024 年起免收官费"系对 2017 年政策的误传。</p>
+  </div>
+
+  <div class="krow">
+    <div class="kstat"><div class="kn">0<span class="ku">元</span></div><div class="kl">官方登记费</div><div class="ks">自 2017-04-01 停征</div></div>
+    <div class="kstat"><div class="kn">2-3<span class="ku">月</span></div><div class="kl">普通件全程时长</div><div class="ks">受理 10 工作日 + 审查 30-60</div></div>
+    <div class="kstat"><div class="kn">60<span class="ku">页</span></div><div class="kl">源代码 + 文档各自</div><div class="ks">前 30 + 后 30</div></div>
+    <div class="kstat"><div class="kn">1<span class="ku">家</span></div><div class="kl">全国唯一登记机构</div><div class="ks">中国版权保护中心（北京）</div></div>
+  </div>
+
+  <div class="alert alert-red">
+    <span class="ai">⚠️</span>
+    <p><strong>2022 年起，中国版权保护中心已取消所有官方加急通道。</strong>当前市面"加急 1/3/7 工作日下证"¥1000-¥10000 的报价均为代理"包装费"，无版权中心背书，不能真正加速审查。普通件走线上自助即可，周期相同。</p>
+  </div>
+
+  <h3>拿到软著能做什么</h3>
+  <div class="tw">
+    <table>
+      <thead><tr><th>用途</th><th>是否必需</th><th>备注</th></tr></thead>
+      <tbody>
+        <tr><td><strong>华为/腾讯/小米应用商店上架 App</strong></td><td class="cr">✗ 必需</td><td>安卓各大商店上架必交软著</td></tr>
+        <tr><td><strong>苹果 App Store 上架</strong></td><td class="cg">非必需</td><td>苹果不要求，但国内商店强制</td></tr>
+        <tr><td><strong>高新技术企业认定</strong></td><td class="cr">✗ 必需</td><td>作为"知识产权"硬指标，至少 6 项</td></tr>
+        <tr><td><strong>软件企业备案（双软）</strong></td><td class="cr">✗ 必需</td><td>税收优惠的准入门槛</td></tr>
+        <tr><td><strong>对外授权/销售软件</strong></td><td class="co">推荐</td><td>权属初步证据，诉讼时举证方便</td></tr>
+        <tr><td><strong>融资估值</strong></td><td class="co">推荐</td><td>无形资产评估常用项</td></tr>
+        <tr><td><strong>微信小程序收款/直播</strong></td><td class="cgr">不需要</td><td>只需营业执照</td></tr>
+        <tr><td><strong>ICP 备案 / ICP 许可证</strong></td><td class="cgr">不需要</td><td>备案凭营业执照，许可证凭公司资质</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="alert alert-blue">
+    <span class="ai">📊</span>
+    <p><strong>行业数据：</strong>2024 年全国软件著作权登记 <strong>282.7 万件</strong>，同比 +13.3%；东部地区占比 57%，江苏登记量位列全国第三（国家版权局《2024 年著作权登记情况通知》2025-02-28）。</p>
+  </div>
+</section>
+
+<!-- 1 材料清单 -->
+<section id="materials">
+  <div class="slabel">01 · 材料清单</div>
+  <h2>要准备哪些东西</h2>
+
+  <div class="alert alert-gold">
+    <span class="ai">📋</span>
+    <p><strong>全套材料 = 申请表 + 源程序 60 页 + 文档 60 页 + 主体证明。</strong>2023-06 起全流程无纸化，只需电子 PDF 上传，不寄纸质件。</p>
+  </div>
+
+  <div class="step-card">
+    <div class="step-header">
+      <div class="step-num">A</div>
+      <div class="step-header-content">
+        <h3>源程序鉴别材料（60 页）</h3>
+        <div class="step-meta">最常被驳回的环节，格式一定要对</div>
+      </div>
+    </div>
+    <div class="step-body">
+      <ul class="checklist">
+        <li><strong>页数规则</strong>：总代码 &gt; 60 页 → 提交 <strong>连续前 30 页 + 连续后 30 页</strong>；≤ 60 页 → 全部提交</li>
+        <li><strong>每页行数</strong>：<strong>不少于 50 行</strong>（空行不计入；CPCC 不予受理 &lt; 50 行/页）</li>
+        <li><strong>起止位置</strong>：第 1 页必须是程序/模块的开头；最后一页必须包含程序结束（如 <code>}</code> 或主 <code>main()</code> 结尾）</li>
+        <li><strong>排版规范</strong>（事实标准，非强制）：小四号宋体 · A4 单面黑白打印 · 左页眉写软件全称+版本号 · 右上角页码连续</li>
+        <li><strong>必删内容</strong>：个人信息/测试密钥/邮箱电话/API key；他人商标、Logo 图标；二进制片段</li>
+        <li><strong>提交格式</strong>：PDF（在线上传），<strong>不需盖章</strong></li>
+      </ul>
+      <div class="alert alert-red" style="margin-top:10px">
+        <span class="ai">⚠️</span>
+        <p><strong>坑：</strong>有些代理/博客写"30 行/页"——<strong>错误</strong>。CPCC 官方规范是 50 行/页（空行不算）。若提交 30 行/页几乎必被补正。</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="step-card">
+    <div class="step-header">
+      <div class="step-num">B</div>
+      <div class="step-header-content">
+        <h3>软件说明文档（60 页）</h3>
+        <div class="step-meta">操作手册 OR 设计说明书 二选一</div>
+      </div>
+    </div>
+    <div class="step-body">
+      <ul class="checklist">
+        <li><strong>二选一</strong>：<strong>用户操作手册</strong>（截图 + 功能说明）或 <strong>设计说明书</strong>（架构/流程图）。一般开发者选用户操作手册更省事。</li>
+        <li><strong>页数规则</strong>：和源代码一样——总页 &gt; 60 取前 30 + 后 30；≤ 60 全交。</li>
+        <li><strong>结构</strong>：封皮（含软件名+版本号+作者/单位）→ 目录 → 正文（正文不少于 10 页）</li>
+        <li><strong>页眉页脚</strong>：页眉注软件名+版本号，页脚注著作权人全称。</li>
+        <li><strong>截图要求</strong>：每个关键功能至少 1 张截图；截图中的软件名/版本号要和源代码页眉<strong>完全一致</strong>。</li>
+        <li><strong>打码</strong>：截图中不得出现他人商标/Logo/公司名；测试数据打码</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="step-card">
+    <div class="step-header">
+      <div class="step-num">C</div>
+      <div class="step-header-content">
+        <h3>申请表（在线生成，签章页扫描上传）</h3>
+        <div class="step-meta">在 CPCC 系统在线填写后自动生成 PDF</div>
+      </div>
+    </div>
+    <div class="step-body">
+      <ul class="checklist">
+        <li><strong>关键字段</strong>：软件全称、版本号（如 V1.0）、开发完成日期、首次发表日期、软件简介、权利取得方式</li>
+        <li><strong>签章方式</strong>：
+          <ul style="padding-left:18px;margin-top:4px;font-size:12px;color:var(--text3)">
+            <li>个人：手写签名 + 按手印</li>
+            <li>有字号个体户：盖公章（字号印章）</li>
+            <li>无字号个体户：经营者手写签名 + 按手印</li>
+          </ul>
+        </li>
+        <li><strong>流程</strong>：在线填表 → 自动生成 PDF → 打印签章页 → 扫描回传（只扫签章页，其他页不需要）</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="step-card">
+    <div class="step-header">
+      <div class="step-num">D</div>
+      <div class="step-header-content">
+        <h3>主体证明</h3>
+        <div class="step-meta">和你在"主体选择"的身份对齐</div>
+      </div>
+    </div>
+    <div class="step-body">
+      <div class="tw">
+        <table>
+          <thead><tr><th>申请人类型</th><th>需提交</th></tr></thead>
+          <tbody>
+            <tr><td><strong>个人</strong></td><td>身份证正反面彩色扫描（300dpi）+ 手持身份证半身照（实名认证时用）</td></tr>
+            <tr><td><strong>无字号个体工商户</strong></td><td>同上（按自然人提交）</td></tr>
+            <tr><td><strong>有字号个体工商户</strong></td><td>营业执照副本彩扫 + 经营者身份证正反面 + 经营者手持身份证半身照</td></tr>
+            <tr><td><strong>有限公司</strong></td><td>营业执照副本彩扫（盖公章）+ 法定代表人身份证</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="step-card">
+    <div class="step-header">
+      <div class="step-num">E</div>
+      <div class="step-header-content">
+        <h3>附加材料（只在特殊情况提交）</h3>
+        <div class="step-meta">大部分人不需要</div>
+      </div>
+    </div>
+    <div class="step-body">
+      <ul class="checklist">
+        <li><strong>合作开发</strong>：合作开发协议</li>
+        <li><strong>委托开发</strong>：委托开发合同</li>
+        <li><strong>职务作品</strong>：单位出具的职务开发证明</li>
+        <li><strong>用到他人源代码</strong>：开源协议说明（自述声明即可）或授权书</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 2 申请流程 -->
+<section id="process">
+  <div class="slabel">02 · 申请流程</div>
+  <h2>从注册账号到拿证书 · 6 步走完</h2>
+
+  <div class="alert alert-blue">
+    <span class="ai">💻</span>
+    <p><strong>官方入口</strong>：中国版权保护中心 · 软件著作权在线登记系统 <code>register.ccopyright.com.cn</code>。<strong>软著登记全国唯一受理方 = 北京 CPCC 总部</strong>，江苏/苏州没有分中心，全部走线上。</p>
+  </div>
+
+  <div class="tl">
+    <div class="ti">
+      <div class="td-dot"></div>
+      <div class="ti-day">Step 1（≈ 10 分钟 + 1-3 工作日审核）</div>
+      <div class="ti-title">注册账号 + 实名认证</div>
+      <div class="ti-desc">
+        打开 <code>register.ccopyright.com.cn/register.html</code>。手机号 + 邮箱 + 密码注册 → 上传身份证正反面 + <strong>手持身份证半身照</strong>（光线要好，脸和证件都清晰）→ 提交后约 <strong>1-3 个工作日</strong>审核通过。<br>
+        <strong>个体工商户</strong>选"企业用户"（即使没法人），上传营业执照副本和经营者身份证。
+      </div>
+    </div>
+    <div class="ti">
+      <div class="td-dot"></div>
+      <div class="ti-day">Step 2（≈ 30 分钟）</div>
+      <div class="ti-title">在线填写申请表</div>
+      <div class="ti-desc">
+        登录业务平台 <code>register.ccopyright.com.cn/registration.html</code> → 选"软件著作权登记"。填写以下字段：
+        <div class="form-sim">
+          <div class="form-row"><span class="form-label">软件全称</span><span class="form-value">含版本号，如 <span class="suggested">XX 工作室官网管理系统 V1.0</span></span></div>
+          <div class="form-row"><span class="form-label">软件简称</span><span class="form-value">选填（例：XX 官网）</span></div>
+          <div class="form-row"><span class="form-label">版本号</span><span class="form-value"><span class="suggested">V1.0</span><span class="note">和软件全称内一致</span></span></div>
+          <div class="form-row"><span class="form-label">开发完成日期</span><span class="form-value">必须 ≤ 申请日，且 ≥ 源代码最晚修改日</span></div>
+          <div class="form-row"><span class="form-label">首次发表日期</span><span class="form-value">未发表勾"未发表"；填写则须 ≥ 开发完成日</span></div>
+          <div class="form-row"><span class="form-label">权利取得方式</span><span class="form-value"><span class="suggested">原始取得</span><span class="note">自行开发选此；受让选"继受取得"</span></span></div>
+          <div class="form-row"><span class="form-label">开发方式</span><span class="form-value"><span class="suggested">独立开发</span><span class="note">合作/委托/职务另选</span></span></div>
+          <div class="form-row"><span class="form-label">软件功能简介</span><span class="form-value">200-500 字，写清主要功能模块</span></div>
+        </div>
+        <strong>坑</strong>：2024-04-23 后新证书不再显示"开发完成日期/首次发表日期"，但<strong>申请表仍必填且审查</strong>，日期不能编造。
+      </div>
+    </div>
+    <div class="ti">
+      <div class="td-dot"></div>
+      <div class="ti-day">Step 3（≈ 10 分钟）</div>
+      <div class="ti-title">上传鉴别材料</div>
+      <div class="ti-desc">
+        上传 PDF：① 源代码 60 页 · ② 说明文档 60 页 · ③ 申请表签章页扫描 · ④ 身份证明（身份证/营业执照）。<br>
+        每个 PDF 单独上传，文件名建议英文（避免乱码）。全部上传后"提交申请"。
+      </div>
+    </div>
+    <div class="ti">
+      <div class="td-dot"></div>
+      <div class="ti-day">Step 4（≈ 10 工作日）</div>
+      <div class="ti-title">受理 → 收到电子受理通知书</div>
+      <div class="ti-desc">
+        CPCC 收到后约 10 个工作日内完成形式审查，发电子受理通知书到账号"我的业务"里。此时产生登记号，可用于应用商店等"待审期"证明。<br>
+        <strong>登记费：¥0</strong>（自 2017-04-01 起停征，无需支付、无需发票）。
+      </div>
+    </div>
+    <div class="ti">
+      <div class="td-dot"></div>
+      <div class="ti-day">Step 5（≈ 30-60 工作日）</div>
+      <div class="ti-title">实质审查</div>
+      <div class="ti-desc">
+        审查员审查源代码、文档、申请表一致性。无问题 → 进入发证队列；有问题 → 下发<strong>补正通知书</strong>（在通知书载明答复期限内回复，一般 15 个工作日）。<br>
+        <strong>法定最长审查期 = 自受理之日起 60 日内</strong>（《计算机软件著作权登记办法》第 18 条）。年底高峰实操可能延至 3 个月。
+      </div>
+    </div>
+    <div class="ti">
+      <div class="td-dot"></div>
+      <div class="ti-day">Step 6（即时）</div>
+      <div class="ti-title">下发电子证书</div>
+      <div class="ti-desc">
+        审查通过后，在 CPCC 用户中心"我的业务 → 已登记完成"下载 PDF 电子证书（带国徽水印、电子签章，可验真）。<br>
+        <strong>纸质证书不再主动发放</strong>，如需额外申请挂号信邮寄，须支付工本费（2025 年第三方标示约 ¥30-50，以 CPCC 实时公示为准）。<br>
+        登记完成后会在 CPCC "登记公告"栏公示。
+      </div>
+    </div>
+  </div>
+
+  <div class="alert alert-gold">
+    <span class="ai">📱</span>
+    <p><strong>电子证书查验：</strong>登录 CPCC 官网 → 登记公告栏查询，或用 PDF 中附带的二维码/验证码在 CPCC 验真页核对。电子证书法律效力等同纸质证书。</p>
+  </div>
+</section>
+
+<!-- 3 费用与时限 -->
+<section id="fee">
+  <div class="slabel">03 · 费用与时限</div>
+  <h2>官费 ¥0，但这些周边服务可能收费</h2>
+
+  <h3>官方登记费（¥0，已停征）</h3>
+  <div class="alert alert-green">
+    <span class="ai">✅</span>
+    <p><strong>依据：</strong>财政部、发改委《关于清理规范一批行政事业性收费有关政策的通知》<code>财税〔2017〕20 号</code>，生效 <strong>2017-04-01</strong>，停征计算机软件著作权登记费（原 ¥300/件）。CPCC 2017-03-29 公告同步执行，至今未变。</p>
+  </div>
+
+  <h3>其他官方可能产生的费用</h3>
+  <div class="tw">
+    <table>
+      <thead><tr><th>项目</th><th>收费</th><th>何时产生</th></tr></thead>
+      <tbody>
+        <tr><td>登记费</td><td class="cg">¥0</td><td>自 2017-04-01 起停征</td></tr>
+        <tr><td>源程序例外交存费</td><td class="co">¥320/件</td><td>选择例外交存（只提交部分源代码+声明）时才收</td></tr>
+        <tr><td>变更/补充登记费</td><td class="co">¥150/件次</td><td>证书下发后需改名/改权利人</td></tr>
+        <tr><td>源程序封存保管费</td><td class="co">¥120（≤ 100 页）+ ¥2/超出页</td><td>选择封存保管服务时</td></tr>
+        <tr><td>转让/专有许可合同登记费</td><td class="co">¥300/件</td><td>出售软著时</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>代理机构服务费（行情参考）</h3>
+  <div class="alert alert-gold">
+    <span class="ai">💰</span>
+    <p>2026 年市场价 <strong>¥500-¥2,000/件</strong>。¥300-¥800 通常含"材料代写 + 代提交"；¥1,500-¥2,000 含预审 + 补正处理。<strong>所谓"加急 1/3/7 工作日"¥2800-¥10000 的报价都是代理包装——CPCC 自 2022 年起已取消官方加急通道，代理不能真正加速。</strong></p>
+  </div>
+
+  <h3>时限表（2026 实际）</h3>
+  <div class="tw">
+    <table>
+      <thead><tr><th>阶段</th><th>常规时长</th><th>备注</th></tr></thead>
+      <tbody>
+        <tr><td>账号实名认证</td><td class="cg">1-3 个工作日</td><td>上传材料后人工审核</td></tr>
+        <tr><td>填表 + 上传</td><td class="cg">30-60 分钟</td><td>材料备齐情况下</td></tr>
+        <tr><td>受理（形式审查）</td><td class="cg">≈ 10 个工作日</td><td>发电子受理通知书</td></tr>
+        <tr><td>实质审查</td><td class="co">30-60 个工作日</td><td>法定 60 日上限；年底高峰可能超时</td></tr>
+        <tr><td>从提交到拿证</td><td class="co">2-3 个月</td><td>无补正情况下</td></tr>
+        <tr><td>补正答复期</td><td class="cr">15 个工作日</td><td>以补正通知书载明为准，逾期视为撤回</td></tr>
+        <tr><td>补正后重新审查</td><td class="cr">+ 1-2 个月</td><td>延迟发证</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="alert alert-red">
+    <span class="ai">🚨</span>
+    <p><strong>避坑：</strong>2022 年起 CPCC 无任何官方加急；2025 年部分代理文章提及"高新企业优先审查试点"，但<strong>国家版权局未正式发文</strong>，待核实，勿轻信。</p>
+  </div>
+</section>
+
+<!-- 4 主体选择 -->
+<section id="identity">
+  <div class="slabel">04 · 主体选择</div>
+  <h2>个人 vs 个体工商户 vs 公司 · 选哪个？</h2>
+
+  <div class="alert alert-blue">
+    <span class="ai">📌</span>
+    <p><strong>关键差别：</strong>证书上写的是<strong>谁</strong>，权属就归<strong>谁</strong>。个体户申请时分两种情况，直接影响证书主体名。</p>
+  </div>
+
+  <div class="tw">
+    <table>
+      <thead><tr><th>你的身份</th><th>申请人类型选</th><th>证书显示</th><th>后续权属</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><strong>普通个人（无执照）</strong></td>
+          <td class="cg">自然人</td>
+          <td>本人姓名</td>
+          <td>权属归自然人；身份证是唯一证明</td>
+        </tr>
+        <tr>
+          <td><strong>无字号个体户</strong><br>（执照写"张三（个体工商户）"）</td>
+          <td class="cg">自然人</td>
+          <td>经营者姓名</td>
+          <td>权属归自然人（个体户和经营者在法律上同一）</td>
+        </tr>
+        <tr>
+          <td><strong>有字号个体户</strong><br>（执照写"苏州XX工作室（个体工商户）"）</td>
+          <td class="co">其他组织</td>
+          <td>字号全称（"苏州XX工作室（个体工商户）"）</td>
+          <td>权属稳定于商号；上架小程序/App 可作"单位主体"</td>
+        </tr>
+        <tr>
+          <td><strong>有限公司</strong></td>
+          <td class="cg">法人单位</td>
+          <td>公司全称</td>
+          <td>权属归公司；公司注销前要办转让</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="alert alert-gold">
+    <span class="ai">⚠️</span>
+    <p><strong>个体户有字号的注意：</strong>如果以字号（其他组织）身份申请，<strong>个体户名称变更或注销前</strong>，必须办"著作权人变更登记"把软著转到自然人或新主体名下，否则证书可能失效。变更登记 ¥150/件次，约 30-40 工作日。</p>
+  </div>
+
+  <h3>应用商店上架对主体的要求</h3>
+  <div class="tw">
+    <table>
+      <thead><tr><th>商店</th><th>个人</th><th>个体户</th><th>公司</th></tr></thead>
+      <tbody>
+        <tr><td>苹果 App Store</td><td class="cg">✓</td><td class="cg">✓</td><td class="cg">✓</td></tr>
+        <tr><td>华为应用市场</td><td class="cg">✓</td><td class="cg">✓</td><td class="cg">✓</td></tr>
+        <tr><td>腾讯应用宝</td><td class="cg">✓</td><td class="cg">✓</td><td class="cg">✓</td></tr>
+        <tr><td>小米应用商店</td><td class="cr">✗</td><td class="cr">✗</td><td class="cg">✓</td></tr>
+        <tr><td>OPPO / vivo 应用商店</td><td class="cr">✗</td><td class="cr">✗</td><td class="cg">✓</td></tr>
+        <tr><td>微信小程序（收款/直播/电商）</td><td class="cr">✗</td><td class="cg">✓</td><td class="cg">✓</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="alert alert-green">
+    <span class="ai">💡</span>
+    <p><strong>推荐组合：</strong>互联网/AI 开发者用 <strong>"有字号个体工商户"</strong> 身份申请软著——主体名稳定、上小程序能开通收款/直播/电商、比公司运营成本低。日后若真要上小米/OPPO/vivo 商店再升公司（"个转企"可平移，见<a href="suzhou-geti-registration-guide.html" style="color:var(--blue-l)">苏州个体工商户注册手册</a>）。</p>
+  </div>
+</section>
+
+<!-- 5 常见驳回 -->
+<section id="rejection">
+  <div class="slabel">05 · 常见驳回</div>
+  <h2>Top 10 驳回/补正原因 + 规避方案</h2>
+
+  <div class="alert alert-red">
+    <span class="ai">📊</span>
+    <p><strong>2025 年 CPCC 数据：</strong>补正率 &gt; 30%，大部分集中在源代码格式和文档对应。<strong>一次补正一般延长 1-2 个月</strong>，连续 2 次以上补正审查员常直接作"不予登记"。提交前对照下表自查。</p>
+  </div>
+
+  <div class="tw">
+    <table>
+      <thead><tr><th>#</th><th>问题</th><th>触发条件</th><th>规避</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td><strong>每页行数不足 50 行</strong></td>
+          <td>行间距太大 / 空行多 / 注释大段</td>
+          <td>调单倍行距；去除空行与大段注释；页末不留白</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td><strong>前 30/后 30 不连续</strong></td>
+          <td>跨文件拼接 / 第 1 页非开头 / 第 60 页非结束</td>
+          <td>先合并为单 PDF，再截取连续 30 页；主文件优先</td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td><strong>源代码与文档内容不对应</strong></td>
+          <td>手册里的功能代码里找不到</td>
+          <td>按代码实际模块写手册，每功能至少 1 张截图</td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td><strong>与已登记作品大量雷同</strong></td>
+          <td>开源脚手架原样提交 / 公司 GitLab 模板</td>
+          <td>截取含业务逻辑的模块，避开通用框架层</td>
+        </tr>
+        <tr>
+          <td>5</td>
+          <td><strong>软件名含他人商标</strong></td>
+          <td>"微信XX""支付宝助手""淘宝XX"等</td>
+          <td>起原创名，避开知名商标和"中国/国家"敏感词</td>
+        </tr>
+        <tr>
+          <td>6</td>
+          <td><strong>日期逻辑矛盾</strong></td>
+          <td>完成日期 &gt; 申请日 / 完成日期 &lt; 源码最晚注释日</td>
+          <td>填可自证的日期（Git 记录、公众号发文）</td>
+        </tr>
+        <tr>
+          <td>7</td>
+          <td><strong>文档含他人版本号/Logo/商标</strong></td>
+          <td>截图忘了打码 / 复用旧模板</td>
+          <td>截图统一打码；版本号和申请表全对齐</td>
+        </tr>
+        <tr>
+          <td>8</td>
+          <td><strong>申请人主体证明问题</strong></td>
+          <td>身份证/执照模糊 / 过期 / 签章页漏签</td>
+          <td>彩扫 300dpi；执照在有效期内；签章清晰</td>
+        </tr>
+        <tr>
+          <td>9</td>
+          <td><strong>源代码含敏感信息</strong></td>
+          <td>真实 API key / 邮箱 / 电话 / 测试密钥</td>
+          <td>提交前用 sed 批量替换为 <code>******</code></td>
+        </tr>
+        <tr>
+          <td>10</td>
+          <td><strong>页眉不一致</strong></td>
+          <td>源代码写"V1.0"、文档写"V1.0.1"、申请表写"1.0"</td>
+          <td>三者严格一致，包括标点和空格</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <details>
+    <summary>如何应对"补正通知书"</summary>
+    <div class="det-body" style="margin-top:10px">
+      <ul class="checklist">
+        <li><strong>期限</strong>：以补正通知书载明为准（一般 <strong>15 个工作日</strong>，也有代理文章标 30 自然日）</li>
+        <li><strong>逾期后果</strong>：视为撤回，已办的不退</li>
+        <li><strong>处理步骤</strong>：登录 CPCC "我的业务" → 下载补正通知 → 按通知指出的问题修改 PDF → 回传</li>
+        <li><strong>一次改全</strong>：避免反复补正，补正两次以上风险高</li>
+        <li><strong>被不予登记</strong>：可重新申请（无冷静期），但需重新排队</li>
+      </ul>
+    </div>
+  </details>
+</section>
+
+<!-- 6 苏州本地 -->
+<section id="suzhou">
+  <div class="slabel">06 · 苏州本地</div>
+  <h2>苏州用户能享受什么</h2>
+
+  <div class="alert alert-gold">
+    <span class="ai">📍</span>
+    <p><strong>核心事实：</strong>软著登记全国唯一由北京 CPCC 线上受理，苏州没有分中心、没有代办点。但苏州本地有<strong>代理服务资源</strong>和<strong>园区补贴</strong>（有限）可以用。</p>
+  </div>
+
+  <h3>苏州工业园区 SIP · 软著登记资助</h3>
+  <div class="step-card">
+    <div class="step-header">
+      <div class="step-num">¥</div>
+      <div class="step-header-content">
+        <h3>苏园科〔2019〕25 号实施细则</h3>
+        <div class="step-meta">每件 ¥300，年 ≤ 20 件</div>
+      </div>
+    </div>
+    <div class="step-body">
+      <ul class="checklist">
+        <li><strong>金额</strong>：软著登记每件资助 <strong>¥300</strong></li>
+        <li><strong>上限</strong>：同一单位每年最多 20 件</li>
+        <li><strong>申报对象</strong>：注册在苏州工业园区的<strong>企事业单位</strong>（公司、事业单位）</li>
+        <li><strong>个体工商户是否覆盖</strong>：文件未明确包含，建议申报前电话确认园区知识产权办公室</li>
+        <li><strong>申报时点</strong>：取得登记证书后按受理轮次提交（SIP 每年分 1-2 轮）</li>
+        <li><strong>2024 年度受理通知</strong>：<code>tsc.sipac.gov.cn/epservice/techsub/.../304993</code></li>
+      </ul>
+    </div>
+  </div>
+
+  <h3>其他区县补贴现状（2026-04 核实）</h3>
+  <div class="tw">
+    <table>
+      <thead><tr><th>区域</th><th>软著单件补贴</th><th>说明</th></tr></thead>
+      <tbody>
+        <tr><td>苏州工业园区（SIP）</td><td class="cg">¥300/件（企业）</td><td>苏园科〔2019〕25 号仍在执行</td></tr>
+        <tr><td>苏州高新区</td><td class="co">过往 ¥200-500/件，已合并入"知识产权战略专项"</td><td>以项目制打包资助，个体户难触达</td></tr>
+        <tr><td>吴中区 / 相城区 / 姑苏区</td><td class="cgr">未查到现行单件补贴</td><td>建议致电所在区科技局/市监局确认</td></tr>
+        <tr><td>苏州市级政策</td><td class="cgr">无单件补贴</td><td>《加快推动软件产业高质量发展若干政策措施》(苏府规字〔2024〕) 仅写"便利化服务"</td></tr>
+        <tr><td>江苏省级</td><td class="cgr">无软著普惠</td><td>仅对获专利金银奖的单位有 ¥20-100 万奖励</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>苏州代理机构资源</h3>
+  <div class="alert alert-blue">
+    <span class="ai">🏢</span>
+    <p><strong>苏州市知识产权服务业商会</strong>（官方在册代理机构名录）<br>
+    地址：苏州高新区学森路 9 号　电话：<strong>0512-65390501</strong><br>
+    网址：<code>szipsc.com/manage/info-18366.html</code><br>
+    推荐从商会在册机构挑选，市场价软著代办 ¥300-800/件（非加急）。</p>
+  </div>
+
+  <h3>实操建议</h3>
+  <ol style="padding-left:24px;color:var(--text2);font-size:13px;line-height:1.8">
+    <li><strong>自己申请</strong>最划算——官费 ¥0，周期 2-3 个月。准备材料约花半天时间。</li>
+    <li><strong>没时间处理格式</strong>——找商会在册代理 ¥300-500/件代写代提交。</li>
+    <li><strong>园区注册的公司</strong>——申请后一定去 SIP 申报 ¥300/件资助（≤ 20 件/年）。</li>
+    <li><strong>时间敏感的上架需求</strong>——2022 年起无真加急，只能提前 3 个月启动。</li>
+  </ol>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="slabel">常见问题</div>
+  <h2>个人开发者最常问</h2>
+
+  <div class="qa">
+    <div class="qa-q">Q: 软著官费到底是 ¥0 还是 ¥300？听到不同说法。</div>
+    <div class="qa-a">确认是 <strong>¥0</strong>。依据财政部《财税〔2017〕20 号》，自 <strong>2017-04-01</strong> 起停征软件著作权登记费。网上"2024 年起免收"的说法是对 2017 年老政的误传，CPCC 2017 年就已经公告不再收费，并一直执行至今。如有人跟你收 ¥200-450 的"官费"，那是代理自己加的服务费。</div>
+  </div>
+
+  <div class="qa">
+    <div class="qa-q">Q: 没有字号的个体工商户能申请吗？</div>
+    <div class="qa-a">可以。无字号个体户在法律上等同自然人，软著申请时选 <strong>"自然人"</strong>身份提交，证书上写经营者姓名。和普通个人申请完全一样。</div>
+  </div>
+
+  <div class="qa">
+    <div class="qa-q">Q: 以个人身份申请过的软著，个体户办下来后能转过去吗？</div>
+    <div class="qa-a">可以。办"著作权人变更登记"，交变更申请书 + 原证书 + 前后主体证明（身份证 + 营业执照）+ 理由说明，官费 ¥150/件，30-40 工作日出新证书。CPCC 官方支持个人 ↔ 个体户 ↔ 公司之间的权利人变更。</div>
+  </div>
+
+  <div class="qa">
+    <div class="qa-q">Q: 源代码不够 60 页怎么办？</div>
+    <div class="qa-a">不够 60 页 <strong>全部提交</strong>就可以，CPCC 不会因代码短而拒收，只要每页 ≥ 50 行且含实质逻辑即可。小工具类软件 20-30 页提交的案例很常见。</div>
+  </div>
+
+  <div class="qa">
+    <div class="qa-q">Q: 必须提供软件操作手册吗？我开发的是 API/SDK，没有界面。</div>
+    <div class="qa-a">可以用 <strong>设计说明书</strong>替代操作手册（架构图、模块说明、调用流程图、数据结构图等）。CPCC 明文允许"操作手册或设计说明书 二选一"。</div>
+  </div>
+
+  <div class="qa">
+    <div class="qa-q">Q: AI 生成的代码能申请软著吗？</div>
+    <div class="qa-a">可以申请，权属归组织/个人（AI 不是法律上的著作权人）。CPCC 目前不在形审阶段判断是否为 AI 生成。但若提交材料明显雷同已登记作品（如完全复制 LLM 模板代码），可能被驳回"缺乏独创性"。建议提交含真实业务逻辑的模块，避开纯脚手架。</div>
+  </div>
+
+  <div class="qa">
+    <div class="qa-q">Q: 能一次提交多个版本吗（V1.0, V2.0）？</div>
+    <div class="qa-a">不能，<strong>一证一版本</strong>。V1.0 和 V2.0 要分两次申请（官费都是 ¥0），V2.0 需写清"基于 V1.0 的重大升级"并列版本差异。重大版本之间建议相隔 ≥ 6 个月。</div>
+  </div>
+
+  <div class="qa">
+    <div class="qa-q">Q: 被 CPCC 驳回"不予登记"后还能重申吗？</div>
+    <div class="qa-a">可以，无法定冷静期，但需重新走全流程（包括重新上传、重新排队审查）。若收到"补正通知书"而非"不予登记"，优先在 15 个工作日内补正，代价更小。</div>
+  </div>
+
+  <div class="qa">
+    <div class="qa-q">Q: 软著保护期多久？</div>
+    <div class="qa-a">自然人 50 年（作者终生 + 死后 50 年）；法人 50 年（自软件首次发表起 50 年）。超期后进入公有领域。续期/续展无需操作，但软件一般在 5-10 年内被新版本替代，不构成现实问题。</div>
+  </div>
+
+  <div class="qa">
+    <div class="qa-q">Q: 拿到软著后在应用商店上架，商店会怎么用？</div>
+    <div class="qa-a">上传证书 PDF 或证书编号（如"软著登字第 XXXXXXXX 号"）到商店的开发者后台 → 商店调 CPCC 公开数据库校验真伪 + 主体一致 → 通过后可提交 App 审核。大商店都接受电子证书。</div>
+  </div>
+</section>
+
+</div>
+
+<footer>
+  <div>中国计算机软件著作权登记实操手册 · 2026 最新版</div>
+  <div style="margin-top:6px;">依据：《计算机软件著作权登记办法》(国家版权局 1 号令) · 财税〔2017〕20 号 · 中国版权保护中心 2023-06 无纸化通告 · 苏园科〔2019〕25 号</div>
+  <div style="margin-top:6px;color:#4a5568;">信息截至 2026-04-21。官方信息以中国版权保护中心 <code style="color:#6a88a5">ccopyright.com.cn</code> 为准。</div>
+</footer>
+
+<script>
+const secs=document.querySelectorAll('section[id]');
+const links=document.querySelectorAll('.progress-nav a');
+const obs=new IntersectionObserver(e=>{
+  e.forEach(en=>{
+    if(en.isIntersecting){
+      links.forEach(l=>l.classList.remove('active'));
+      const a=document.querySelector('.progress-nav a[href="#'+en.target.id+'"]');
+      if(a)a.classList.add('active');
+    }
+  });
+},{rootMargin:'-20% 0px -70% 0px'});
+secs.forEach(s=>obs.observe(s));
+links.forEach(l=>l.addEventListener('click',e=>{
+  e.preventDefault();
+  const t=document.querySelector(l.getAttribute('href'));
+  if(t)t.scrollIntoView({behavior:'smooth',block:'start'});
+}));
+</script>
+</body>
+</html>
